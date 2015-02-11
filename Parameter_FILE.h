@@ -1,0 +1,23 @@
+typedef struct Parameter_FILEinfo
+{  
+  /* * * Parameter Table * * * */
+  char ** Name_Parameters;            // Name_Parameters  : Name Model Input Parameters
+  char ** Code_Parameters;
+
+#include <include.FILES_to_READ.global.h>
+
+}Parameter_FILE;
+
+void P_A_R_A_M_E_T_E_R___F_I_L_E___A_L_L_O_C( Parameter_FILE * );
+
+void P_A_R_A_M_E_T_E_R___F_I_L_E___U_P_L_O_A_D( Parameter_FILE * );
+
+void P_A_R_A_M_E_T_E_R___F_I_L_E___F_R_E_E( Parameter_FILE * );
+
+void AssignLabel_to_Parameter_FILE(int j, char * Label, Parameter_FILE * P);
+
+void AssignCodes_to_Parameter_FILE(int j, char * Label, Parameter_FILE * P);
+
+void fprintf_Input_Parameter_FILE(FILE * fp, Parameter_FILE * P);
+
+
