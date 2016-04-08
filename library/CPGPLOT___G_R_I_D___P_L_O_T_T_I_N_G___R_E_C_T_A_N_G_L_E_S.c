@@ -14,7 +14,7 @@ void C_P_G___P_L_O_T_T_I_N_G___2d___G_R_I_D___R_E_C_T_A_N_G_L_E_S( Parameter_CPG
 {
   /*  Input parameters:
       . no_of_COLORS: number of different color states (i.e., 4)
-      . COLOR_STATES[0] = 1.0; COLOR_STATES[1] = 2.0; COLOR_STATES[2] = 3.0; COLOR_STATES[2] = 4.0;
+      . COLOR_STATES[0] = 1.0; COLOR_STATES[1] = 2.0; COLOR_STATES[2] = 3.0; COLOR_STATES[3] = 4.0;
       which means that when W[i] takes the value 1.0, then the corresponding rectangle will be drawn and 
       filled with the first color in index. This involves that the array W[] should only contain values 
       1.0, 2.0, 3.0 and 4.0, in this example. 
