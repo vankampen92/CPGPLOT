@@ -39,15 +39,15 @@ void CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT * C
   int i;
 
   /* BEGIN:   Defining symbols, lines, ranges, etc                              */
-  static int color_Index;    
-  static int type_of_Line;   
-  static int type_of_Width;  
-  static int type_of_Symbol; 
+  /* static int color_Index;                                          */
+  /* static int type_of_Line;    */
+  /* static int type_of_Width;   */
+  /* static int type_of_Symbol;  */
 
-  color_Index    = CPG->color_Index;
-  type_of_Line   = CPG->type_of_Line;
-  type_of_Width  = CPG->type_of_Width;
-  type_of_Symbol = CPG->type_of_Symbol; 
+  /* color_Index    = CPG->color_Index; */
+  /* type_of_Line   = CPG->type_of_Line; */
+  /* type_of_Width  = CPG->type_of_Width; */
+  /* type_of_Symbol = CPG->type_of_Symbol; */ 
   /*   END:   Initialization of colors, lines, and symbols                      */
 
   /* BEGIN : Preparing cpgplot representation: Ranges and float conversion */ 
@@ -58,8 +58,6 @@ void CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT * C
   X_RANGE[0] = CPG->CPG_RANGE_X_0;   X_RANGE[1] = CPG->CPG_RANGE_X_1;
   Y_RANGE[0] = CPG->CPG_RANGE_Y_0;   Y_RANGE[1] = CPG->CPG_RANGE_Y_1;
 
-  A_X_E_S___R_A_N_G_E_S( NO_of_POINTS, x_Data, X_RANGE, SCALE_X, Range_x );
-  A_X_E_S___R_A_N_G_E_S( NO_of_POINTS, y_Data, Y_RANGE, SCALE_Y, Range_y );
  
   float * xs = (float *)malloc( sizeof(float) * NO_of_POINTS );
   float * ys = (float *)malloc( sizeof(float) * NO_of_POINTS );
@@ -68,8 +66,14 @@ void CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT * C
   /*   END : Float conversion completed */
 
   if (SAME_PLOT == 0 ){
+    A_X_E_S___R_A_N_G_E_S( NO_of_POINTS, x_Data, X_RANGE, SCALE_X, Range_x );
+    A_X_E_S___R_A_N_G_E_S( NO_of_POINTS, y_Data, Y_RANGE, SCALE_Y, Range_y );
+    
     cpg_XY_plot(NO_of_POINTS, xs, ys, Range_x, Range_y, 
-		CPG->color_Index, CPG->type_of_Line, CPG->type_of_Width, CPG->type_of_Symbol, 
+		CPG->color_Index, 
+		CPG->type_of_Line, 
+		CPG->type_of_Width, 
+		CPG->type_of_Symbol, 
 		X_label, Y_label, Title);
   }
   else{
@@ -85,7 +89,6 @@ void CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT * C
     // printf( "color_Index = %d, type_of_Line = %d, type_of_Width = %d, type_of_Symbol = %d\n",
     //	       CPG->color_Index, CPG->type_of_Line, CPG->type_of_Width, CPG->type_of_Symbol ); 
     */
-    
     cpg_XY_same_plot(NO_of_POINTS, xs, ys,
 		     CPG->color_Index, 
 		     CPG->type_of_Line, 

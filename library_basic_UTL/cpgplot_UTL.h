@@ -27,6 +27,15 @@ void cpg_XY_plot(int, float *, float *, float *, float *,
 			int, int, int, int, 
 			char *, char *, char *);
 
+void cpg_box_plot(int , 
+		  int , float *, float **, int, 
+		  float * , float * ,   
+		  int , 
+		  int , 
+		  int , 
+		  int , 
+		  char * , char * , char *); 
+
 void cpg_XY_shade_between_curves( int n, 
 				  float * x, float * y_1, float * y_2,
 				  int color_Index, 
