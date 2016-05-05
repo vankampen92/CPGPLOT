@@ -1,4 +1,22 @@
+void CPGPLOT___B_A_R___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT * CPG,
+							     int SAME_PLOT,
+							     int NO_of_POINTS, 
+							     double * X, 
+							     double * Y, 
+							     char * X_label, 
+							     char * Y_label, 
+							     char * Title,
+							     int SCALE_X, int SCALE_Y );
 
+void CPGPLOT___B_O_X___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT * CPG,
+							     int SAME_PLOT,
+							     int NO_of_POINTS, 
+							     double * X, 
+							     double ** Y, int NP, 
+							     char * X_label, 
+							     char * Y_label, 
+							     char * Title,
+							     int SCALE_X, int SCALE_Y );
 
 void CPGPLOT___X_Y___H_I_S_T_O_G_R_A_M (Parameter_CPGPLOT * CPG,
 		       int NO_of_POINTS, double * x_DATA, int n_BINS,
@@ -52,17 +70,6 @@ void CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT * C
                                                            char * Y_label,
                                                            char * Title,
                                                            int SCALE_X, int SCALE_Y );
-
-
-void CPGPLOT___B_O_X___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT * CPG,
-							     int SAME_PLOT,
-							     int NO_of_POINTS, 
-							     double * X, 
-							     double ** Y, int NP, 
-							     char * X_label, 
-							     char * Y_label, 
-							     char * Title,
-							     int SCALE_X, int SCALE_Y );
 
 void CPGPLOT___X_Y___S_H_A_D_E___B_E_T_W_E_E_N___C_U_R_V_E_S ( Parameter_CPGPLOT * CPG,  
 							       int NO_of_POINTS, 

@@ -27,6 +27,15 @@ void cpg_XY_plot(int, float *, float *, float *, float *,
 			int, int, int, int, 
 			char *, char *, char *);
 
+void cpg_bar_plot(int SAME_PLOT, 
+		  int n, float *xs, float *ys,
+		  float *Range_x, float *Range_y,   
+		  int color_Index, 
+		  int type_of_Line, 
+		  int type_of_Width, 
+		  int type_of_Symbol, 
+		  char *X_label, char *Y_label, char *Title);
+
 void cpg_box_plot(int , 
 		  int , float *, float **, int, 
 		  float * , float * ,   
