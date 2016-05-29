@@ -19,7 +19,7 @@ void cpg_XY_plot(int n, float *xs, float *ys, float *Range_x, float *Range_y,
   cpgslw(2.0);
   float ch;
   cpgqch( &ch );
-  cpgsch(1.5 * ch);  // cpgsch(1.2);  
+  cpgsch(2.0 * ch);  // cpgsch(1.2);  
   //cpgsch(2.5 * ch);  // cpgsch(1.2);  
   cpgenv(Range_x[0], Range_x[1], Range_y[0], Range_y[1], 0, 1);
   
@@ -33,7 +33,6 @@ void cpg_XY_plot(int n, float *xs, float *ys, float *Range_x, float *Range_y,
   cpgsch(1.0); // cpgsch(0.83);
     
   cpgsci(color_Index);
-  
   /*
    * Mark 'n' points (coordinates in arrays XS and YS), using symbol
    */

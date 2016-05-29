@@ -6,7 +6,8 @@
 void CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT * CPG,
 							   int SAME_PLOT,
 							   int NO_of_POINTS, 
-							   double * x_Data, double * y_Data,
+							   double * x_Data, 
+							   double * y_Data,
 							   char * X_label, 
 							   char * Y_label, 
 							   char * Title,
@@ -38,18 +39,6 @@ void CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT * C
   double X_RANGE[2], Y_RANGE[2];
   int i;
 
-  /* BEGIN:   Defining symbols, lines, ranges, etc                              */
-  /* static int color_Index;                                          */
-  /* static int type_of_Line;    */
-  /* static int type_of_Width;   */
-  /* static int type_of_Symbol;  */
-
-  /* color_Index    = CPG->color_Index; */
-  /* type_of_Line   = CPG->type_of_Line; */
-  /* type_of_Width  = CPG->type_of_Width; */
-  /* type_of_Symbol = CPG->type_of_Symbol; */ 
-  /*   END:   Initialization of colors, lines, and symbols                      */
-
   /* BEGIN : Preparing cpgplot representation: Ranges and float conversion */ 
   /* x and y Ranges */
   /* SCALE_X = 0: x-axis automatic scale
@@ -58,7 +47,6 @@ void CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT * C
   X_RANGE[0] = CPG->CPG_RANGE_X_0;   X_RANGE[1] = CPG->CPG_RANGE_X_1;
   Y_RANGE[0] = CPG->CPG_RANGE_Y_0;   Y_RANGE[1] = CPG->CPG_RANGE_Y_1;
 
- 
   float * xs = (float *)malloc( sizeof(float) * NO_of_POINTS );
   float * ys = (float *)malloc( sizeof(float) * NO_of_POINTS );
 

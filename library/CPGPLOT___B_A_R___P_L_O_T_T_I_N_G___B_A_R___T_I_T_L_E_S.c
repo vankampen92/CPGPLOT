@@ -3,15 +3,17 @@
 /* Functions defined here are using the full potential 
    of the Parameter_CPGPLOT * C generic structure. */
      
-void CPGPLOT___B_A_R___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT * CPG,
-							     int SAME_PLOT,
-							     int NO_of_POINTS, 
-							     double * X, 
-							     double * Y, 
-							     char * X_label, 
-							     char * Y_label, 
-							     char * Title,
-							     int SCALE_X, int SCALE_Y )
+void CPGPLOT___B_A_R___P_L_O_T_T_I_N_G___B_A_R___T_I_T_L_E_S (Parameter_CPGPLOT * CPG, 
+							      int SAME_PLOT,
+							      int NO_of_POINTS, 
+							      double * X, 
+							      double * Y, 
+							      char * X_label, 
+							      char * Y_label, 
+							      char * Title,
+							      int SCALE_X, 
+							      int SCALE_Y, 
+							      char ** Bar_Titles )
 {
   /* This function produces a simple bar plots in a (x, y) two-dimensional plot 
      The input arrat Y[][] should be structured as follows: 
@@ -43,11 +45,10 @@ void CPGPLOT___B_A_R___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT *
   /* SCALE_X = 0: x-axis automatic scale
      SCALE_Y = 0: y-axis automatic scale                                   */
 
+   X_RANGE[0] = CPG->CPG_RANGE_X_0;   X_RANGE[1] = CPG->CPG_RANGE_X_1;
+   Y_RANGE[0] = CPG->CPG_RANGE_Y_0;   Y_RANGE[1] = CPG->CPG_RANGE_Y_1;
+
   if( SAME_PLOT == 0 ) {
-    
-    X_RANGE[0] = CPG->CPG_RANGE_X_0;   X_RANGE[1] = CPG->CPG_RANGE_X_1;
-    Y_RANGE[0] = CPG->CPG_RANGE_Y_0;   Y_RANGE[1] = CPG->CPG_RANGE_Y_1;
-    
     A_X_E_S___R_A_N_G_E_S( NO_of_POINTS, X, X_RANGE, SCALE_X, Range_x );
     A_X_E_S___R_A_N_G_E_S( NO_of_POINTS, Y, Y_RANGE, SCALE_Y, Range_y );
   }
@@ -61,14 +62,15 @@ void CPGPLOT___B_A_R___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT *
   }
   /*   END : Float conversion completed */
 
-  cpg_bar_plot( SAME_PLOT, 
-		NO_of_POINTS, xs, ys,
-		Range_x, Range_y, 
-		CPG->color_Index, 
-		CPG->type_of_Line, 
-		CPG->type_of_Width, 
-		CPG->type_of_Symbol, 
-		X_label, Y_label, Title );
+  cpg_bar_plot_bar_Titles( SAME_PLOT, 
+			   NO_of_POINTS, xs, ys,
+			   Range_x, Range_y, 
+			   CPG->color_Index, 
+			   CPG->type_of_Line, 
+			   CPG->type_of_Width, 
+			   CPG->type_of_Symbol, 
+			   X_label, Y_label, Title, 
+			   Bar_Titles );
  
   free(xs); free(ys);
 }

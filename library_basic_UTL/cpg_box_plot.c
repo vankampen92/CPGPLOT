@@ -35,10 +35,10 @@ void cpg_box_plot(int SAME_PLOT,
   float * y_line = (float *)calloc(2, sizeof(float) );
 
   if( SAME_PLOT == 0 ) {
-    cpgslw(2.0);
+    cpgslw(3.0);
     float ch;
     cpgqch( &ch );
-    cpgsch(1.2 * ch);  // cpgsch(1.2); cpgsch(2.5 * ch);  cpgsch(1.2);  
+    cpgsch(2.0 * ch);  // cpgsch(1.2); cpgsch(2.5 * ch);  cpgsch(1.2 * ch);  
                          
     cpgenv(Range_x[0], Range_x[1], Range_y[0], Range_y[1], 0, 1);
     
