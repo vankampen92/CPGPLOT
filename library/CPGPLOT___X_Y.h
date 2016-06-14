@@ -1,3 +1,13 @@
+void CPGPLOT___P_L_O_T_T_I_N_G___F_R_A_M_E___P_L_O_T ( Parameter_CPGPLOT * CPG,
+							     int SAME_PLOT,
+							     int NO_of_POINTS, 
+							     double * X, 
+							     double * Y, 
+							     char * X_label, 
+							     char * Y_label, 
+							     char * Title,
+						       int SCALE_X, int SCALE_Y );
+
 void CPGPLOT___B_A_R___P_L_O_T_T_I_N_G___F_R_A_C_T_I_O_N_S (Parameter_CPGPLOT * CPG, 
 							    int SAME_PLOT,
 							    int NO_of_POINTS, 

@@ -1,3 +1,12 @@
+void cpg_frame_plot(int SAME_PLOT, 
+		    int n, float *xs, float *ys,
+		    float *Range_x, float *Range_y,   
+		    int color_Index, 
+		    int type_of_Line, 
+		    int type_of_Width, 
+		    int type_of_Symbol, 
+		    char *X_label, char *Y_label, char *Title); 
+
 void cpg_XY_histogram (int n, float * data, int n_BINS,
 		       float * Range_x, float * Range_y, 
 		       int color_Index, int type_of_Line, int type_of_Width,

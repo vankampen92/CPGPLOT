@@ -65,25 +65,12 @@ void CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT * C
 		X_label, Y_label, Title);
   }
   else{
-    /* 
-    CPG->color_Index    = (color_Index % 10);
-    CPG->type_of_Line   = (type_of_Line % 5);
-    CPG->type_of_Width  = (type_of_Width % 3);
-    CPG->type_of_Symbol = (type_of_Symbol % 5); 
-
-    assert(CPG->color_Index <= 10);   assert(CPG->type_of_Line <= 5); 
-    assert(CPG->type_of_Width <= 3);  assert(CPG->type_of_Symbol <= 5);
-
-    // printf( "color_Index = %d, type_of_Line = %d, type_of_Width = %d, type_of_Symbol = %d\n",
-    //	       CPG->color_Index, CPG->type_of_Line, CPG->type_of_Width, CPG->type_of_Symbol ); 
-    */
+    
     cpg_XY_same_plot(NO_of_POINTS, xs, ys,
 		     CPG->color_Index, 
 		     CPG->type_of_Line, 
 		     CPG->type_of_Width, 
 		     CPG->type_of_Symbol);
-    
-    // color_Index++; type_of_Line++; type_of_Width++; type_of_Symbol++; 
   }
   
   free(ys); free(xs);
