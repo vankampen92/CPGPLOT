@@ -28,15 +28,9 @@ void CPGPLOT___X_Y___S_C_A_T_T_E_R_E_D___S_C_A_L_E ( Parameter_CPGPLOT * CPG,
   double X_RANGE[2], Y_RANGE[2];
   int i;
 
-  /* BEGIN : Preparing cpgplot representation 
-   *         Defining symbols, lines, ranges, etc  
-   *         Allocating and calculating non-variable float vectors for cpgplot */
-  /* x and y Ranges */
-
   /* SCALE_X = 0: x-axis automatic scale
      SCALE_Y = 0: y-axis automatic scale 
-  */
-  
+  */  
   X_RANGE[0] = CPG->CPG_RANGE_X_0;   X_RANGE[1] = CPG->CPG_RANGE_X_1;
   Y_RANGE[0] = CPG->CPG_RANGE_Y_0;   Y_RANGE[1] = CPG->CPG_RANGE_Y_1;
 

@@ -90,22 +90,26 @@ Parameter_CPGPLOT * A_C_T_I_V_A_T_E___C_P_G_P_L_O_T (int No_of_OUTPUT_VARIABLES,
 						     char * cpgopen_argument )
 {
    
-  printf(" Number of Output Variables = %d\t Number of Subpanels = %d\n", 
+  printf(" Maximum Number of Panels = %d\t Number of Subpanels = %d\n", 
 	 No_of_OUTPUT_VARIABLES, CPG__PANEL__X * CPG__PANEL__Y);
+  
   if( No_of_OUTPUT_VARIABLES > CPG__PANEL__X * CPG__PANEL__Y ){
-    printf(" Warning!!!\n Not enough subpanels to draw this quantity of output variables\n");
-    printf(" in separate subplot\n");
+    printf(" Warning!!!\n Not enough subpanels to draw this quantity of variables\n");
+    printf(" in separate subplots\n");
     //Press_Key();
     /*   printf(" The program will exit\n"); */
     /*   exit(0); */
   }
-  //int DEVICE_NUMBER = cpgopen("/XSERVE");
+  
   int DEVICE_NUMBER = cpgopen( cpgopen_argument );
   if (DEVICE_NUMBER <= 0 ) {
     printf(" Graphic device cannot be opened\n");
     exit(1);
   }
   
+  printf(" Device Number: %d\n", DEVICE_NUMBER); 
+  // getchar();
+
   cpgsubp(CPG__PANEL__X, CPG__PANEL__Y); /* Subdivision of the window in panels.
 					    Automatic writing on consecutive panels
 					    in CPG__PANEL__X  x  CPG__PANEL__Y grid 

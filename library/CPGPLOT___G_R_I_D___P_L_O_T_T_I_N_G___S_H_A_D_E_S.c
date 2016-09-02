@@ -425,7 +425,7 @@ void cpg_PALETT( int type, float CONTRA, float BRIGHT)
     cpgctab(AL, AR, AG, AB, 20, CONTRA, BRIGHT);
   }
   else if (type == 6) {
-    /* C        -- AIPS */
+    /* C        -- YELLOW to GREEN */
     cpgctab(GREEN_L, GREEN_R, GREEN_G, GREEN_B, 9, CONTRA, BRIGHT);
   }
   else {

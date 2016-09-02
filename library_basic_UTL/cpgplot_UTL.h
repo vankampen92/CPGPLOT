@@ -1,3 +1,6 @@
+void color_Index_into_RGB_Map(int color_Index, int icilo, int icihi,  
+			      float * R, float * G, float * B);
+
 void cpg_XY_histogram (int n, float * data, int n_BINS,
 		       float * Range_x, float * Range_y, 
 		       int color_Index, int type_of_Line, int type_of_Width,
