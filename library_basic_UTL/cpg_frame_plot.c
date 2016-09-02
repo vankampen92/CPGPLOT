@@ -2,14 +2,14 @@
 
 #define SHRINKING_FACTOR_BOX 0.8
 
-void cpg_bar_plot(int SAME_PLOT, 
-		  int n, float *xs, float *ys,
-		  float *Range_x, float *Range_y,   
-		  int color_Index, 
-		  int type_of_Line, 
-		  int type_of_Width, 
-		  int type_of_Symbol, 
-		  char *X_label, char *Y_label, char *Title)
+void cpg_frame_plot(int SAME_PLOT, 
+		    int n, float *xs, float *ys,
+		    float *Range_x, float *Range_y,   
+		    int color_Index, 
+		    int type_of_Line, 
+		    int type_of_Width, 
+		    int type_of_Symbol, 
+		    char *X_label, char *Y_label, char *Title)
 {  
   /* color_Index... (0,1, ..., 15) 0: 
      Background (black), 1: White, ..., 15 (15 different colors predefined) */
@@ -47,47 +47,6 @@ void cpg_bar_plot(int SAME_PLOT,
     cpgebuf();
   // This is equivalent to a full call to cpglab(X_label, Y_label, Title);
   }
-
-  cpgsch(1.0); // cpgsch(0.83);    
-  cpgsci(color_Index);
-  /* The fill-area style to be used:                                      */ 
-  /* 			  type_of_Filling = 1 => solid (default)          */
-  /*                      type_of_Filling = 2 => outline                  */
-  /*                      type_of_Filling = 3 => hatched                  */
-  /*                      type_of_Filling = 4 => cross-hatched            */
-  type_of_Filling = 2; 
-
-  float XD = (xs[n-1] - xs[0] ) / (float)(n-1); 
-  
-  float * x = (float *)calloc( 2, sizeof(float) );
-  float * y = (float *)calloc( 2, sizeof(float) );
-  
-  int No_of_SUBLINES; 
-  for(i=0; i<n; i++) {
-    x1 = xs[i] - 0.5* SHRINKING_FACTOR_BOX * XD; 
-    y1 = 0.0; 
-    x2 = xs[i] + 0.5* SHRINKING_FACTOR_BOX * XD; 
-    y2 = ys[i];
-
-    type_of_Width = 1; cpgslw(type_of_Width);
-    color_Index = 1;   cpgsci(color_Index);
-    type_of_Line = 3;  cpgsls(type_of_Line); 
-    cpg_XY_same_rectangle(x1, y1,  x2, y2,  
-			  color_Index, type_of_Filling );
-    /* Plotting intermediate lines: 
-       Please, comment it out if necessary */
-    No_of_SUBLINES = (int)y2;
-    type_of_Width = 1; cpgslw(type_of_Width);
-    type_of_Line  = 3; cpgsls(type_of_Line); 
-    /* For instance, type_of_Line = 2: Dashed line */
-    for( j = 0; j < (No_of_SUBLINES-1); j++) {
-      x[0] = x1; x[1] = x2;
-      y[0] = y[1]     = 1.0 + (float)j;
-      cpgline(2, x, y);
-    }    
-  }
-  free(x); free(y);
-  
  
   cpgsls(1);            /*  Back to full line... 
 			    type_of Line = 1: Full line 

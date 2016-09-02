@@ -1,5 +1,16 @@
+<<<<<<< HEAD
 void color_Index_into_RGB_Map(int color_Index, int icilo, int icihi,  
 			      float * R, float * G, float * B);
+=======
+void cpg_frame_plot(int SAME_PLOT, 
+		    int n, float *xs, float *ys,
+		    float *Range_x, float *Range_y,   
+		    int color_Index, 
+		    int type_of_Line, 
+		    int type_of_Width, 
+		    int type_of_Symbol, 
+		    char *X_label, char *Y_label, char *Title); 
+>>>>>>> 730d78b8bb7e6b5952da5a7f0edb767b498ea8cd
 
 void cpg_XY_histogram (int n, float * data, int n_BINS,
 		       float * Range_x, float * Range_y, 

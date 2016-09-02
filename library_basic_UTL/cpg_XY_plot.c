@@ -36,7 +36,7 @@ void cpg_XY_plot(int n, float *xs, float *ys, float *Range_x, float *Range_y,
   /*
    * Mark 'n' points (coordinates in arrays XS and YS), using symbol
    */
-  cpgpt(n, xs, ys, type_of_Symbol);
+  if (n>0) cpgpt(n, xs, ys, type_of_Symbol);
 
   /* 
    * Draw a strainght line to merge the points, using color_Index ... 
