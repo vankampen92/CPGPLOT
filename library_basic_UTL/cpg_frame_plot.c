@@ -1,7 +1,5 @@
 #include "cpgplot_headers.h"
 
-#define SHRINKING_FACTOR_BOX 0.8
-
 void cpg_frame_plot(int SAME_PLOT, 
 		    int n, float *xs, float *ys,
 		    float *Range_x, float *Range_y,   

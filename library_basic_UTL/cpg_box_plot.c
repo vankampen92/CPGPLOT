@@ -5,7 +5,7 @@
 void cpg_box_plot(int SAME_PLOT, 
 		  int n, float *xs, float **ys, int np, 
 		  float *Range_x, float *Range_y,   
-		  int color_Index, 
+		  int Initial_color_Index, 
 		  int type_of_Line, 
 		  int type_of_Width, 
 		  int type_of_Symbol, 
@@ -31,9 +31,10 @@ void cpg_box_plot(int SAME_PLOT,
   int i; 
   float x1, y1, x2, y2; 
   int type_of_Filling;
+  int color_Index;
   float * x_line = (float *)calloc(2, sizeof(float) );
   float * y_line = (float *)calloc(2, sizeof(float) );
-
+  
   if( SAME_PLOT == 0 ) {
     cpgslw(3.0);
     float ch;
@@ -51,28 +52,27 @@ void cpg_box_plot(int SAME_PLOT,
   }
 
   cpgsch(1.0); // cpgsch(0.83);    
-  cpgsci(color_Index);
- 
+  color_Index = Initial_color_Index; cpgsci(color_Index);
   /* The fill-area style to be used:                                      */ 
   /* 			  type_of_Filling = 1 => solid (default)          */
   /*                      type_of_Filling = 2 => outline                  */
   /*                      type_of_Filling = 3 => hatched                  */
   /*                      type_of_Filling = 4 => cross-hatched            */
-  type_of_Filling = 2; 
-
+  if( Initial_color_Index == 2) type_of_Filling = 1;
+  else                          type_of_Filling = 2;
+  
   float XD = (xs[n-1] - xs[0] ) / (float)(n-1); 
 
-  
   for(i=0; i<n; i++) {
     x1 = xs[i] - 0.5* SHRINKING_FACTOR_BOX * XD; 
     y1 = ys[1][i]; 
     x2 = xs[i] + 0.5*SHRINKING_FACTOR_BOX * XD; 
     y2 = ys[3][i];
   
-    type_of_Width = 5; cpgslw(type_of_Width);
-    color_Index = 2; cpgsci(color_Index);
+    type_of_Width = 5;                    cpgslw(type_of_Width);
+    color_Index = Initial_color_Index;    cpgsci(color_Index);
     cpg_XY_same_rectangle(x1, y1,  x2, y2,  
-			  color_Index, type_of_Filling );
+			  Initial_color_Index, type_of_Filling );
     
     /* Superior Vertical Line */
     /* ------------- */

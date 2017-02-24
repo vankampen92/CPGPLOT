@@ -75,7 +75,15 @@ void cpg_bar_plot_bar_Titles (int SAME_PLOT,
     y2 = ys[i];
   
     type_of_Width = 8; cpgslw(type_of_Width);
-    color_Index = 2;   cpgsci(color_Index);
+    if( i%2 == 0 ){
+      color_Index = 2;    cpgsci(color_Index);
+      type_of_Filling = 1;
+    }
+    else {
+      color_Index = 4;    cpgsci(color_Index);
+      type_of_Filling = 1;
+    }
+    
     cpg_XY_same_rectangle(x1, y1,  x2, y2,  
 			  color_Index, type_of_Filling );
   }  
