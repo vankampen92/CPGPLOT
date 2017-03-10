@@ -11,13 +11,8 @@ CFLAGS=-g -Wall -DHAVE_INLINE ${EXTRA_INCLUDE_PATH} -DCPGPLOT_REPRESENTATION
 
 COMPILER=gcc
 
-<<<<<<< HEAD
 OBJECTS=A_X_E_S___R_A_N_G_E_S.o cpg_XY_plot.o cpg_box_plot.o cpg_bar_plot.o cpg_bar_plot_bar_Titles.o cpg_bar_plot_Fractions.o cpg_XY_plot_logaxis.o cpg_XY_histogram.o cpg_XY_arrow.o cpg_XY_plot_error_bar.o cpg_XY_scattered.o cpg_XY_same_plot.o cpg_XY_same_arrow.o cpg_XY_same_scattered.o cpg_XY_same_scattered_pt_per_pt.o cpg_XYn_plot.o  cpg_XY_same_circle.o cpg_XY_same_rectangle.o  cpg_XY_shade_between_curves.o cpg_random_number.o cpg_plot_random_points.o Color_Index_Maps.o
-=======
-OBJECTS=A_X_E_S___R_A_N_G_E_S.o cpg_frame_plot.o cpg_XY_plot.o cpg_box_plot.o cpg_bar_plot.o cpg_bar_plot_bar_Titles.o cpg_bar_plot_Fractions.o cpg_XY_plot_logaxis.o cpg_XY_histogram.o cpg_XY_arrow.o cpg_XY_plot_error_bar.o cpg_XY_scattered.o cpg_XY_same_plot.o cpg_XY_same_arrow.o cpg_XY_same_scattered.o cpg_XY_same_scattered_pt_per_pt.o cpg_XYn_plot.o  cpg_XY_same_circle.o cpg_XY_same_rectangle.o  cpg_XY_shade_between_curves.o cpg_random_number.o cpg_plot_random_points.o
->>>>>>> 730d78b8bb7e6b5952da5a7f0edb767b498ea8cd
 
-# OBJECTS_BASIC=A_X_E_S___R_A_N_G_E_S.o cpg_XY_plot.o cpg_box_plot.o cpg_bar_plot.o cpg_bar_plot_bar_Titles.o cpg_bar_plot_Fractionso.o cpg_XY_plot_logaxis.o cpg_XY_histogram.o  cpg_XY_arrow.o cpg_XY_plot_error_bar.o cpg_XY_scattered.o cpg_XY_same_plot.o cpg_XY_same_arrow.o cpg_XY_same_scattered.o cpg_XY_same_scattered_pt_per_pt.o cpg_XYn_plot.o cpg_XY_same_circle.o cpg_XY_same_rectangle.o cpg_XY_shade_between_curves.o cpg_random_number.o cpg_plot_random_points.o
 .SUFIXES:       .o .c
 
 .c.o: 

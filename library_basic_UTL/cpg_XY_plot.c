@@ -21,7 +21,7 @@ void cpg_XY_plot(int n, float *xs, float *ys, float *Range_x, float *Range_y,
   cpgqch( &ch );
   cpgsch(2.0 * ch);  // cpgsch(1.2);  
   //cpgsch(2.5 * ch);  // cpgsch(1.2);  
-  cpgenv(Range_x[0], Range_x[1], Range_y[0], Range_y[1], 0, 1);
+  cpgenv(Range_x[0], Range_x[1], Range_y[0], Range_y[1], 0, 0);
   
   cpgbbuf();
   cpgmtxt("T", 2.0, 0.5, 0.5, Title);    
