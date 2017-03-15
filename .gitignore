@@ -6,3 +6,5 @@
 # make and build files
 *.o
 *.a
+*.ps
+*.pdf
