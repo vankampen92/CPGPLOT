@@ -65,7 +65,7 @@ int CPGPLOT___X_Y_n___P_L_O_T_T_I_N_G ( Parameter_CPGPLOT * CPG,
   int * type_of_Symbol = (int *)malloc( sizeof(int) * n_XY );
   
   for ( j = 0; j < n_XY; j++ ){
-    color_Index[j] = 5; //color_Index[j] = 2+j;
+    color_Index[j] = 2+j; //color_Index[j] = 5; //
     type_of_Line[j] = 1;
     type_of_Width[j] = 1;
     type_of_Symbol[j] = 1;
