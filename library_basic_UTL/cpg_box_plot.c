@@ -69,7 +69,7 @@ void cpg_box_plot(int SAME_PLOT,
     x2 = xs[i] + 0.5*SHRINKING_FACTOR_BOX * XD; 
     y2 = ys[3][i];
   
-    type_of_Width = 5;                    cpgslw(type_of_Width);
+    type_of_Width = 10;                    cpgslw(type_of_Width);
     color_Index = Initial_color_Index;    cpgsci(color_Index);
     cpg_XY_same_rectangle(x1, y1,  x2, y2,  
 			  Initial_color_Index, type_of_Filling );

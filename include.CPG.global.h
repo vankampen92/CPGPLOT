@@ -15,6 +15,9 @@ int type_of_Line;
 int type_of_Width; 
 int type_of_Symbol;
 
+char * X_axis_Control;
+char * Y_axis_Control; 
+
 int CPG_LABEL_TYPES;
 char * X_label;
 char * Y_label; 

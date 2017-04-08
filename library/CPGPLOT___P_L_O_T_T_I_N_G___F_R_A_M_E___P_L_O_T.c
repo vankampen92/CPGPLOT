@@ -4,19 +4,16 @@
    of the Parameter_CPGPLOT * C generic structure. */
      
 void CPGPLOT___P_L_O_T_T_I_N_G___F_R_A_M_E___P_L_O_T ( Parameter_CPGPLOT * CPG,
-							     int SAME_PLOT,
-							     int NO_of_POINTS, 
-							     double * X, 
-							     double * Y, 
-							     char * X_label, 
-							     char * Y_label, 
-							     char * Title,
-							     int SCALE_X, int SCALE_Y )
+						       int SAME_PLOT,
+						       int NO_of_POINTS, 
+						       double * X, 
+						       double * Y, 
+						       char * X_label, 
+						       char * Y_label, 
+						       char * Title,
+						       int SCALE_X, int SCALE_Y )
 {
-  /* This function produces a simple bar plots in a (x, y) two-dimensional plot 
-     The input arrat Y[][] should be structured as follows: 
-  */
-  
+ 
   /* The ranges, plot features (color, line, width, type) are
      first specified, and float converstion performed */
 
@@ -43,14 +40,12 @@ void CPGPLOT___P_L_O_T_T_I_N_G___F_R_A_M_E___P_L_O_T ( Parameter_CPGPLOT * CPG,
   /* SCALE_X = 0: x-axis automatic scale
      SCALE_Y = 0: y-axis automatic scale                                   */
 
-  if( SAME_PLOT == 0 ) {
-    
     X_RANGE[0] = CPG->CPG_RANGE_X_0;   X_RANGE[1] = CPG->CPG_RANGE_X_1;
     Y_RANGE[0] = CPG->CPG_RANGE_Y_0;   Y_RANGE[1] = CPG->CPG_RANGE_Y_1;
     
     A_X_E_S___R_A_N_G_E_S( NO_of_POINTS, X, X_RANGE, SCALE_X, Range_x );
     A_X_E_S___R_A_N_G_E_S( NO_of_POINTS, Y, Y_RANGE, SCALE_Y, Range_y );
-  }
+ 
   
   float * xs = (float *)malloc( sizeof(float) * NO_of_POINTS );
   float * ys = (float *)malloc( sizeof(float) * NO_of_POINTS );
@@ -61,15 +56,13 @@ void CPGPLOT___P_L_O_T_T_I_N_G___F_R_A_M_E___P_L_O_T ( Parameter_CPGPLOT * CPG,
   }
   /*   END : Float conversion completed */
 
-  cpg_frame_plot( SAME_PLOT, 
-		NO_of_POINTS, xs, ys,
-		Range_x, Range_y, 
-		CPG->color_Index, 
-		CPG->type_of_Line, 
-		CPG->type_of_Width, 
-		CPG->type_of_Symbol, 
-		X_label, Y_label, Title );
- 
+  cpg_frame_plot(  Range_x[0], Range_x[1],
+		   Range_y[0], Range_y[1],
+		   CPG->type_of_Width,
+		   CPG->character_Size, 
+		   CPG->X_axis_Control,
+		   CPG->Y_axis_Control );
+  
   free(xs); free(ys);
 }
 

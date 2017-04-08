@@ -66,7 +66,10 @@ fprintf(fp, " Default: -G30 %s\n", SIDE);
 fprintf(fp, " Parameters controling 2d shanding plots\n");
 fprintf(fp, " Default: Type of Shading:                      -G31 %d\n", Type_of_COLOR_SHADING);
 fprintf(fp, " Default: Color Brightness:                     -G32 %f\n", Type_of_BRIGHT);
-fprintf(fp, " Default: Inverted (-1.0) vs Non-inverted (1.0) -G33 %f\n", Type_of_CONTRA); 
+fprintf(fp, " Default: Inverted (-1.0) vs Non-inverted (1.0) -G33 %f\n", Type_of_CONTRA);
+fprintf(fp, " String to control X and Y axis and tick position and tick label position:\n"); 
+fprintf(fp, " Default: BCNST -G34 %s\n", X_axis_Control);
+fprintf(fp, " Default: BCNST -G35 %s\n", Y_axis_Control); 
 
 
 

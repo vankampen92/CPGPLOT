@@ -17,6 +17,14 @@ type_of_Symbol = 1;
 
 char * p_CPG_Name;
 
+X_axis_Control = (char *)malloc( sizeof(char) * 10 );
+Y_axis_Control = (char *)malloc( sizeof(char) * 10 );
+
+X_axis_Control[0] = '\0';
+p_CPG_Name = strcat( X_axis_Control, "BCNST" );
+Y_axis_Control[0] = '\0';
+p_CPG_Name = strcat( Y_axis_Control, "BCNST" );
+
 X_label  = (char *)malloc( sizeof(char) * 500 );
 Y_label  = (char *)malloc( sizeof(char) * 500 );
 Title    = (char *)malloc( sizeof(char) * 500 );

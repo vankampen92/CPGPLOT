@@ -101,6 +101,12 @@
 		else if(argv[argcount][3]=='3'){
                   sscanf(argv[argcount+1],"%f", &Type_of_CONTRA);
                 }
+		else if(argv[argcount][3]=='4'){
+                  sscanf(argv[argcount+1], "%s", X_axis_Control);
+                }
+		else if(argv[argcount][3]=='5'){
+                  sscanf(argv[argcount+1], "%s", Y_axis_Control);
+                }
                 else {
                   printf(" Some error reading CPG parameters\n");
                   printf(" in include.CPG.argumentControl.c\n");
