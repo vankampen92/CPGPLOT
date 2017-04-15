@@ -2,8 +2,13 @@ typedef struct Parameter_CPGPLOTinfo
 {
   #include "include.CPG.global.h"
 
+  float character_Size; /* Extra member to be passed between 
+			   function using this structure */
+  
   Parameter_FILE * CPG_File;
 
+  
+  
   double ** y_Time;
   double  * x_Time;
 }Parameter_CPGPLOT;

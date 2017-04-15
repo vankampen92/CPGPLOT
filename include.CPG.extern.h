@@ -15,6 +15,9 @@ extern int type_of_Line;
 extern int type_of_Width; 
 extern int type_of_Symbol;
 
+extern char * X_axis_Control;
+extern char * Y_axis_Control;
+
 extern int CPG_LABEL_TYPES;
 extern char * X_label;
 extern char * Y_label; 

@@ -17,10 +17,14 @@ void cpg_XY_plot(int n, float *xs, float *ys, float *Range_x, float *Range_y,
    */
   
   cpgslw(2.0);
-  float ch;
+  // float ch;
   // cpgqch( &ch );
   // cpgsch(2.0 * ch);  // cpgsch(1.2);  
-  cpgsch(1.5);  
+  // cpgsch(1.5);  
+  float ch; cpgqch( &ch );
+  // cpgsch(2.0 * ch);  // cpgsch(1.2);  
+  cpgsch(1.6);  
+  
   cpgenv(Range_x[0], Range_x[1], Range_y[0], Range_y[1], 0, 0);
   
   cpgbbuf();

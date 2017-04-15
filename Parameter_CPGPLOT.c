@@ -40,6 +40,9 @@ void  P_A_R_A_M_E_T_E_R___C_P_G_P_L_O_T___U_P_L_O_A_D (Parameter_CPGPLOT * C)
   C->type_of_Width       = type_of_Width; 
   C->type_of_Symbol      = type_of_Symbol;
 
+  C->X_axis_Control      = X_axis_Control;
+  C->Y_axis_Control      = Y_axis_Control;
+  
   C->CPG_LABEL_TYPES     = CPG_LABEL_TYPES; 
   C->Title               = Title;
   C->X_label             = X_label; 

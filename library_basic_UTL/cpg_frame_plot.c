@@ -1,61 +1,22 @@
 #include "cpgplot_headers.h"
 
-void cpg_frame_plot(int SAME_PLOT, 
-		    int n, float *xs, float *ys,
-		    float *Range_x, float *Range_y,   
-		    int color_Index, 
-		    int type_of_Line, 
-		    int type_of_Width, 
-		    int type_of_Symbol, 
-		    char *X_label, char *Y_label, char *Title)
-{  
-  /* color_Index... (0,1, ..., 15) 0: 
-     Background (black), 1: White, ..., 15 (15 different colors predefined) */
-  /* type_of_Line... (1, ..., 5)     
-     (only five all possible)                                               */
-  /* type_of_Width... (1, ..., 201)  D
-     efault, 1 = 1/200 Inches (approx 0.003 Inches)                         */
-  /* type_of_Symbol...  (0, ..., 31) 
-     Standard maker sympols (more markers are available. See manual)        */
-  /*                                                                        */
-  /* ( See http://www.astro.caltech.edu/~tjp/pgplot/subroutines.html, 
-     for further details )                                                  */
-
-  /*
-   * Call cpgenv to specify the range of the axes and to draw a box, and
-   * cpglab to label it. The x-axis runs from 0 to 10, and y from 0 to 20.
-   */
+void cpg_frame_plot(float X_0, float X_1, float Y_0, float Y_1, 
+		    int type_of_Width, float character_Size,
+		    char * X_control, char * Y_control)
+{
+  // Redrawing the box and axes on the same plot!!!
+  // (without erasing anything)
+  // Line width, character size and the rest of specifications
+  // to draw the box and axes should match the values used to set up
+  // box and axes for the first time because they are again used
+  // to define the standard viewport through the call to cpgvstd().
+  // X_control and Y_control should be something like "BCNST" to specify position of the axes and tick marks and tick labels.
   
-  int i,j; 
-  float x1, y1, x2, y2; 
-  int type_of_Filling;
-
-  if( SAME_PLOT == 0 ) {
-    cpgslw(2.0);
-    float ch;
-    cpgqch( &ch );
-    cpgsch(1.2 * ch);  // cpgsch(1.2); cpgsch(2.5 * ch);  cpgsch(1.2);  
-                         
-    cpgenv(Range_x[0], Range_x[1], Range_y[0], Range_y[1], 0, 1);
-    
-    cpgbbuf();
-    cpgmtxt("T", 2.0, 0.5, 0.5, Title);    
-    cpgmtxt("B", 3.2, 0.5, 0.5, X_label);	
-    cpgmtxt("L", 2.2, 0.5, 0.5, Y_label);
-    cpgebuf();
-  // This is equivalent to a full call to cpglab(X_label, Y_label, Title);
-  }
- 
-  cpgsls(1);            /*  Back to full line... 
-			    type_of Line = 1: Full line 
-			 */
-  cpgslw(1);            /*  Back to default line width...  
-			    type_of Line = 1: thinest line 
-			 */
-                        /* Back to default color 
-                         */
-  cpgsci(1);
-
-  return;
+  cpgslw(type_of_Width); 
+  cpgsch(character_Size);
+  cpgvstd();
+  cpgswin(X_0, X_1, Y_0, Y_1); 
+  cpgbox (X_control, 0.0, 0,
+	  Y_control, 0.0, 0);
 }
-
+  

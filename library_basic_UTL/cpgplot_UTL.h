@@ -1,16 +1,20 @@
+void cpg_frame_plot(float X_0, float X_1, float Y_0, float Y_1, 
+		    int type_of_Width, float character_Size,
+		    char * X_control, char * Y_control); 
+
 int color_Index_into_RGB_Map_Divergent(int icilo, int icihi, float x,  
 				       float * R, float * G, float * B); 
 
 void color_Index_into_RGB_Map(int color_Index, int icilo, int icihi,  
 			      float * R, float * G, float * B);
-void cpg_frame_plot(int SAME_PLOT, 
-		    int n, float *xs, float *ys,
-		    float *Range_x, float *Range_y,   
-		    int color_Index, 
-		    int type_of_Line, 
-		    int type_of_Width, 
-		    int type_of_Symbol, 
-		    char *X_label, char *Y_label, char *Title); 
+void cpg_frame_plot_OBSOLETE(int SAME_PLOT, 
+			     int n, float *xs, float *ys,
+			     float *Range_x, float *Range_y,   
+			     int color_Index, 
+			     int type_of_Line, 
+			     int type_of_Width, 
+			     int type_of_Symbol, 
+			     char *X_label, char *Y_label, char *Title); 
 
 void cpg_XY_histogram (int n, float * data, int n_BINS,
 		       float * Range_x, float * Range_y, 
