@@ -70,6 +70,8 @@ void CPGPLOT___X_Y___S_C_A_T_T_E_R_E_D___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT *
   for(i=0; i<NO_of_POINTS; i++){ xs[i] = (float)x_Data[i]; ys[i] = (float)y_Data[i]; }
   /*   END : Float conversion completed */
 
+  cpgsch(2.0);  // cpgsch(1.2);
+  
   if (SAME_PLOT == 0 ){
     cpg_XY_scattered(NO_of_POINTS, xs, ys, Range_x, Range_y, 
 		     CPG->color_Index, CPG->type_of_Symbol, 
@@ -82,7 +84,6 @@ void CPGPLOT___X_Y___S_C_A_T_T_E_R_E_D___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT *
     /* CPG->type_of_Symbol = (type_of_Symbol % 5);                         */
 
     assert(CPG->color_Index < 16);   assert(CPG->type_of_Symbol < 32);
-
     cpg_XY_same_scattered(NO_of_POINTS, xs, ys,
 			  CPG->color_Index, CPG->type_of_Symbol);
     
