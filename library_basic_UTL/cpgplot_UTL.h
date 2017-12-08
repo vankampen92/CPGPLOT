@@ -25,6 +25,12 @@ void cpg_XYn_plot(int n, int n_XY, float *xs, float **ys, float *Range_x, float 
 		  int * color_Index, int * type_of_Line, int * type_of_Width, int * type_of_Symbol, 
 		  char * X_label, char * Y_label, char * Title);
 
+
+void cpg_XYn_subplot(int n, int n_XY, float *xs, float **ys, float *Range_x, float *Range_y, 
+		     int * color_Index, int * type_of_Line, int * type_of_Width, int * type_of_Symbol, 
+		     char * X_label, char * Y_label, char * Title);
+
+
 void cpg_XYn_scattered (int n, int n_XY, float *xs, float **ys, float *Range_x, float *Range_y, 
 			int * color_Index, 
 			int * type_of_Line, int * type_of_Width, 

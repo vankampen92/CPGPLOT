@@ -63,9 +63,22 @@ int CPGPLOT___X_Y_n___P_L_O_T_T_I_N_G ( Parameter_CPGPLOT * CPG,
   int * type_of_Line = (int *)malloc( sizeof(int) * n_XY );
   int * type_of_Width = (int *)malloc( sizeof(int) * n_XY );
   int * type_of_Symbol = (int *)malloc( sizeof(int) * n_XY );
-  
+
+  int icilo, icihi; 
+  cpgqcir(&icilo, &icihi);
+  cpgscir(icilo, icihi);
+  float x;
+  int color_I;
+  float Red, Green, Blue; 
   for ( j = 0; j < n_XY; j++ ){
-    color_Index[j] = 2+j; //color_Index[j] = 5; //
+    x = (float)j/(float)n_XY;
+    color_I = color_Index_into_RGB_Map_Divergent(icilo, icihi,
+						 x,  
+						 &Red,
+						 &Green,
+						 &Blue);
+    cpgscr(color_I, Red, Green, Blue); 
+    color_Index[j] = color_I; //color_Index[j] = 5; //
     type_of_Line[j] = 1;
     type_of_Width[j] = 1;
     type_of_Symbol[j] = 1;

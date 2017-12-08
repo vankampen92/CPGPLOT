@@ -66,6 +66,12 @@ int CPGPLOT___X_Y_n___P_L_O_T_T_I_N_G ( Parameter_CPGPLOT * CPG,
 					char * X_label, char * Y_label, char * Title,
 					int SCALE_X, int SCALE_Y );
 
+int CPGPLOT___X_Y_n___S_U_B___P_L_O_T_T_I_N_G ( Parameter_CPGPLOT * CPG, 
+						int NO_of_POINTS, int n_XY, 
+						double * x_Data, double ** y_Data, 
+						char * X_label, char * Y_label, char * Title,
+						int SCALE_X, int SCALE_Y );
+
 int CPGPLOT___X_Y_n___S_C_A_T_T_E_R_E_D ( Parameter_CPGPLOT * CPG, 
 					  int NO_of_POINTS, int n_XY, 
 					  double * x_Data, double ** y_Data, 

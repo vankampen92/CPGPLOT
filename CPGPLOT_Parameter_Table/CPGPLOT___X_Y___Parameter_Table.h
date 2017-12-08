@@ -30,3 +30,10 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___E_R_R_O_R___B_A_R ( Parameter_Table * P,
 
 void C_P_G___S_U_B___P_L_O_T_T_I_N_G___E_R_R_O_R___B_A_R___D_R_I_V_E_R ( int DATA_POINTS, 
 									 Parameter_Table * Table);
+
+void P_L_O_T_T_I_N_G___P_A_R_A_M_E_T_R_I_C___C_O_N_F_I_G_U_R_A_T_I_O_N_S (Parameter_Table * P, 
+									  Parameter_Space * S, 
+									  double ** X_0, 
+									  int n_0, 
+									  double ** X_1, 
+									  int n_1); 

@@ -19,12 +19,12 @@ void cpg_XYn_plot(int n, int n_XY, float *xs, float **ys, float *Range_x, float 
   float ch;
   cpgqch( &ch );
   //cpgsch(1.5 * ch);
-  cpgsch(2.7 * ch);
+  cpgsch(2.0 * ch);
   
   cpgenv(Range_x[0], Range_x[1], Range_y[0], Range_y[1], 0, 1);
   // cpglab(X_label, Y_label, Title);
   
-  cpgsch(3.0 * ch);
+  cpgsch(2.0 * ch);
   cpgbbuf();
   cpgmtxt("T", 2.0, 0.5, 0.5, Title);    
   cpgmtxt("B", 3.2, 0.5, 0.5, X_label);	

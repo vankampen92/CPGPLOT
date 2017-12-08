@@ -91,16 +91,16 @@ void C_P_G___P_L_O_T_T_I_N_G___2d___G_R_I_D___S_H_A_D_E_S( Parameter_CPGPLOT * C
   }
   
   int sta = C_P_G___P_L_O_T_T_I_N_G___2d___C_O_L_O_R___S_U_R_F_A_C_E___D_R_I_V_E_R ( FIRST_PLOT,  
-								 W_RANGE, ORIGIN, g,
-								 L__X, L__Y, X_d, Y_d,
-								 CPG->X_label, 
-								 CPG->Y_label, 
-								 CPG->W_label, 
-								 CPG->Title, 
-								 CPG->SIDE, 
-                                                                 CPG->Type_of_COLOR_SHADING,
-								 CPG->Type_of_BRIGHT, 
-								 CPG->Type_of_CONTRA );
+										     W_RANGE, ORIGIN, g,
+										     L__X, L__Y, X_d, Y_d,
+										     CPG->X_label, 
+										     CPG->Y_label, 
+										     CPG->W_label, 
+										     CPG->Title, 
+										     CPG->SIDE, 
+										     CPG->Type_of_COLOR_SHADING,
+										     CPG->Type_of_BRIGHT, 
+										     CPG->Type_of_CONTRA );
   
   free( Number );
   free( g );

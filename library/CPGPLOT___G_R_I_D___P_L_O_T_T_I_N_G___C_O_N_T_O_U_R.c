@@ -157,7 +157,7 @@ int C_P_G___P_L_O_T_T_I_N_G___2d___C_O_N_T_O_U_R___S_U_R_F_A_C_E___D_R_I_V_E_R( 
   printf(" X axes label: %s\n", X_label);
   printf(" Y axes label: %s\n", Y_label);
   printf(" Z axes label: %s\n", W_label);
-  printf(" Max Value (Z_MAX) = %g\t Min Value (Z_min) = %g\n", W_RANGE[0], W_RANGE[1]);
+  printf(" Max Value (Z_min) = %g\t Min Value (Z_MAX) = %g\n", W_RANGE[0], W_RANGE[1]);
   float g_min = (float)W_RANGE[0]; float g_MAX =  (float)W_RANGE[1]; 
   
   printf(" Contour levels: \n");

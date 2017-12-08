@@ -8,3 +8,10 @@
 *.a
 *.ps
 *.pdf
+
+# files that are NOT *.* (for instance, executable files)
+!*.*
+
+# files that are NOT either the Makefile or the makefile
+!?akefile
+
