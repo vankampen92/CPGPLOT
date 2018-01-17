@@ -1,6 +1,0 @@
-void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Parameter_Table * P,  
--rw-rw-r-- 1 dalonso dalonso 16193 feb 10  2016 ./CPGPLOT_Parameter_Table/CPGPLOT___X_Y___Parameter_Table.c
-... ... ... ...
-void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Parameter_Table * P,  
--rw-rw-r-- 1 dalonso dalonso 16193 feb 10  2016 ./CPGPLOT_Parameter_Table/CPGPLOT___X_Y___Parameter_Table.c
-... ... ... ...

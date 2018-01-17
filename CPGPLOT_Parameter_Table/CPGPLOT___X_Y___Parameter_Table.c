@@ -129,8 +129,8 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G ( Parameter_Table * P,
   for (i = 0; i < P->SUB_OUTPUT_VARIABLES; i++) {
     
     Title[0] = '\0';
-    p_Title = strcat( Title, Y_label[i] );    
-    p_Title = strcat( Title, ".    T i m e   E v o l u t i o n" );
+    // p_Title = strcat( Title, Y_label[i] );    
+    // p_Title = strcat( Title, ".    T i m e   E v o l u t i o n" );
 #if defined VERBOSE  
     printf("Title: %s\nX axes: %s\nY axes: %s\n\n", Title, X_label, Y_label[i]);
 #endif

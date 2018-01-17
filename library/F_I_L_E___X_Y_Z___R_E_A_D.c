@@ -142,7 +142,7 @@ void X_Y_Z___R_E_A_D___3C ( char * Name,
 			    double * z_Data, 
 			    int * No_of_POINTS)
 {
-  /* This function reads the x,y file (Name) 
+  /* This function reads the xyz file (Name) 
      Important note: The number of columns of this file should be 
      always 3. Otherwise, another reading function is required	
   

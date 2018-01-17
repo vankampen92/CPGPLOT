@@ -8,6 +8,7 @@
 *.a
 *.ps
 *.pdf
+*.txt
 
 # files that are NOT *.* (for instance, executable files)
 !*.*
