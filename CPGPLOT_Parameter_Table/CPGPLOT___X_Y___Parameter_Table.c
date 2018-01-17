@@ -10,7 +10,8 @@
 
 #if defined CPGPLOT_REPRESENTATION
 void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Parameter_Table * P,  
-									 int NO, double * x_Time, double ** y_Time, 
+									 int NO, double * x_Time,
+									 double ** y_Time, 
 									 int Input_Parameter )
 {
   /* CPG Representation: Time evolution of the array stored at y_Time[] */
@@ -45,7 +46,7 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Paramet
     
     Title[0] = '\0';
     p_Title = strcat( Title, Y_label[i] );    
-    p_Title = strcat( Title, ".   T i m e   E v o l u t i o n.  " );
+    p_Title = strcat( Title, ". Time Evolution" );
     p_Title = strcat( Title, P->Name_Parameters[Input_Parameter]);
     p_Title = strcat( Title, "  =  ");    
     double Value = AssignStructValue_to_VectorEntry( Input_Parameter, P );
