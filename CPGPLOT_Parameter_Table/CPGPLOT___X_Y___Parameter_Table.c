@@ -8,7 +8,7 @@
    it is done in a model specific header file (MODEL.h).  
 */ 
 #define NO_TITLES
-
+#define NO_STATIONARY_POINT_REPRESENTATION
 #if defined CPGPLOT_REPRESENTATION
 void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Parameter_Table * P,  
 									 int NO, double * x_Time,
@@ -65,7 +65,7 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Paramet
 						  NO, x_Time, y_Time[i],    
 						  X_label, Y_label[i], Title,
 						  SCALE_X, SCALE_Y );
-   
+#ifndef NO_STATIONARY_POINT_REPRESENTATION   
     /* B E G I N :   Plotting the stationary assymptotic behavior      */    
     k =  P->IO_VARIABLE_LIST[i];
     /* L O W E R   S O L U T I O N : */
@@ -91,6 +91,7 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Paramet
 						  X_label, Y_label[i], Title,
 						  SCALE_X, SCALE_Y );
     /*     E N D : ----------------------------------------------------*/
+#endif
   }
   /*********************************************************************/
   free (Title); free (Y_label); 
