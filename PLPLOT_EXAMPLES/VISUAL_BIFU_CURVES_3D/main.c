@@ -16,13 +16,13 @@
 
    Compilation: 
 
-   . ~$ make EXAMPLE=_bifu_curves 
+   . ~$ make  
    
    Exectution
    
-   . ~$ ./PLOT_bifu_curves 
+   . ~$ ./PLOT 
 
-   . ~$ ./PLOT_bifu_curves -bg FFFFFF -dev psc -o bifuCurves.ps
+   . ~$ ./PLOT -bg FFFFFF -dev psc -o bifuCurves.ps
 */
 
 void plplot3D_xyz_bifu_curves(double *** ,
