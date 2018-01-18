@@ -7,6 +7,7 @@
    Parameter_Table Structure, which is model specific, and
    it is done in a model specific header file (MODEL.h).  
 */ 
+#define NO_TITLES
 
 #if defined CPGPLOT_REPRESENTATION
 void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Parameter_Table * P,  
@@ -45,6 +46,7 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Paramet
   for (i = 0; i < P->SUB_OUTPUT_VARIABLES; i++) {
     
     Title[0] = '\0';
+#ifndef NO_TITLES    
     p_Title = strcat( Title, Y_label[i] );    
     p_Title = strcat( Title, ". Time Evolution" );
     p_Title = strcat( Title, P->Name_Parameters[Input_Parameter]);
@@ -52,7 +54,8 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Paramet
     double Value = AssignStructValue_to_VectorEntry( Input_Parameter, P );
     doubletochar( Value, Number );
     p_Title = strcat( Title, Number);
-
+#endif
+    
 #if defined VERBOSE  
     printf("Title: %s\nX axes: %s\nY axes: %s\n\n", Title, X_label, Y_label[i]);
 #endif
