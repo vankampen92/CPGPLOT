@@ -8,7 +8,8 @@
    it is done in a model specific header file (MODEL.h).  
 */ 
 #define NO_TITLES
-#define NO_STATIONARY_POINT_REPRESENTATION
+// #define NO_STATIONARY_POINT_REPRESENTATION
+
 #if defined CPGPLOT_REPRESENTATION
 void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Parameter_Table * P,  
 									 int NO, double * x_Time,
@@ -54,7 +55,14 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Paramet
     double Value = AssignStructValue_to_VectorEntry( Input_Parameter, P );
     doubletochar( Value, Number );
     p_Title = strcat( Title, Number);
+#else
+    if( MODEL_PARAMETERS_MAXIMUM < 10 )
+      sprintf(Title, "%s = %5.2f   %s = %5.2f   %s = %5.2f",
+	      P->Symbol_Parameters[3],  P->Default_Vector_Parameters[3], 
+	      P->Symbol_Parameters[7],  P->Default_Vector_Parameters[7], 
+	      P->Symbol_Parameters[8],  P->Default_Vector_Parameters[8]); 
 #endif
+    
     
 #if defined VERBOSE  
     printf("Title: %s\nX axes: %s\nY axes: %s\n\n", Title, X_label, Y_label[i]);
@@ -373,11 +381,14 @@ void C_P_G___S_C_A_L_E___F_I_X ( Parameter_Table * P,
   /*   END: Scale definitions */
 }
 
-void C_P_G___S_U_B___P_L_O_T_T_I_N_G___E_R_R_O_R___B_A_R ( Parameter_Table * P,  
-							   int NO, double * x_Time, double ** y_Time,
+void C_P_G___S_U_B___P_L_O_T_T_I_N_G___E_R_R_O_R___B_A_R ( Parameter_Table * P, int SAME_PLOT, 
+							   int NO, double * x_Time,
+							   double ** y_Time,
 							   double ** y_Error)
 {
   /* CPG Representation: Time evolution of the array stored at y_Time[] */
+  int Horizontal_Plot_Position;
+  int Vertical_Plot_Position;
   int i, k;
   char * p_Title;
   char * X_label  = (char *)malloc( sizeof(char) * 500 ); 
@@ -406,24 +417,45 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___E_R_R_O_R___B_A_R ( Parameter_Table * P,
     k = P->IO_VARIABLE_LIST[i]; 
     Y_label[i]  = P->Variable_Name[k]; 
   }
-  for (i = 0; i < P->SUB_OUTPUT_VARIABLES; i++) {
-	
-    Title[0] = '\0';
-    p_Title = strcat( Title, Y_label[i] );    
-    p_Title = strcat( Title, ".    T i m e   E v o l u t i o n" );
-    
-    printf("Title: %s\nX axes: %s\nY axes: %s\n\n", Title, X_label, Y_label[i]);
 
-    //Y_RANGE[i][0] =0.0; Y_RANGE[i][1] =1.0;
-    CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_C_A_L_E ( P->CPG,
-						  NO, x_Time, y_Time[i], 
-						  X_label, Y_label[i], Title, 
-						  SCALE_X, SCALE_Y );
+  P->CPG->type_of_Width       = 4;
+  cpgslct(P->CPG->DEVICE_NUMBER);
+  Title[0] = '\0';
+  for (i = 0; i < P->SUB_OUTPUT_VARIABLES; i++) {
+       
+    if (SAME_PLOT == 0 ) {
+      if( MODEL_PARAMETERS_MAXIMUM < 10 )
+      sprintf(Title, "%s = %5.2f   %s = %5.2f   %s = %5.2f",
+	      P->Symbol_Parameters[3],  P->Default_Vector_Parameters[3], 
+	      P->Symbol_Parameters[7],  P->Default_Vector_Parameters[7], 
+	      P->Symbol_Parameters[8],  P->Default_Vector_Parameters[8]);  
+    }
+    if (SAME_PLOT > 0) {
+      if (P->CPG->CPG__PANEL__X > 0 && P->CPG->CPG__PANEL__Y > 0 ){	
+	Horizontal_Plot_Position  = i%P->CPG->CPG__PANEL__X + 1;
+	Vertical_Plot_Position    = i/P->CPG->CPG__PANEL__X + 1;
+      }
+      else {	
+	Vertical_Plot_Position    = i%abs(P->CPG->CPG__PANEL__Y) + 1;
+	Horizontal_Plot_Position  = i/abs(P->CPG->CPG__PANEL__Y) + 1;
+      }
+      cpgpanl(Horizontal_Plot_Position, Vertical_Plot_Position);
+      P->CPG->color_Index         = 5;
+
+      printf("k = %d\t Horizontal Position = %d\t Vertical Position = %d\n",
+      	 i, Horizontal_Plot_Position, Vertical_Plot_Position);
+      Press_Key(); 
+    }
+    
+    CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( P->CPG, SAME_PLOT, 
+							  NO, x_Time, y_Time[i],
+							  X_label, Y_label[i], Title, 
+							  SCALE_X, SCALE_Y );
     
     cpg_XY_plot_error_bar( NO, x_Time, y_Time[i], y_Error[i]);
   }
   /*********************************************************************/
-  free (Title); free (Y_label); 
+  free (Title); free (Y_label);   
 
   for(i = 0; i<P->SUB_OUTPUT_VARIABLES; i++){
     free (Y_RANGE[i]);
@@ -443,9 +475,106 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___E_R_R_O_R___B_A_R___D_R_I_V_E_R ( int DAT
   // printf(" PANEL__X = %d\tPANEL__Y = %d\n",   Table->CPG__PANEL__X, Table->CPG__PANEL__Y);
   cpgsubp(Table->CPG__PANEL__X, Table->CPG__PANEL__Y);
   cpgask(0);
-  C_P_G___S_U_B___P_L_O_T_T_I_N_G___E_R_R_O_R___B_A_R ( Table, DATA_POINTS,
+  C_P_G___S_U_B___P_L_O_T_T_I_N_G___E_R_R_O_R___B_A_R ( Table, 0, DATA_POINTS,
                                                         Table->T->time_DEF,
                                                         Table->T->AVE,
 							Table->T->VAR );
+}
+
+void C_P_G___S_U_B___P_L_O_T_T_I_N_G___n___P_L_O_T_S(int No_of_DEVICE, 
+						     int SAME_PLOT, int No_of_POINTS, 
+						     Parameter_Table * Table )
+{
+  /* Important Notice: 
+     For this function call to work fine, proper X-axis and Y-axix scales should be 
+     been defined for all plots */
+  int k, kk;
+  float x_Time_Position, y_Time_Position, char_Size;
+  int Horizontal_Plot_Position;
+  int Vertical_Plot_Position;
+   Parameter_Model * P     = Table->P;
+  Parameter_CPGPLOT * CPG = P->CPG;    /* Please, make sure that 
+					  Table->CPG_STO has been initialized and 
+					  P->CPG points to this structure */ 
+  static double Current_Time = 0.0; 
+  double Last_Time;
+  
+  char * Plot_Title = (char *)calloc( 100, sizeof(char));
+  char * Plot_Time  = (char *)calloc( 50, sizeof(char));
+  char * Time_Eraser = (char *)calloc(50, sizeof(char));  
+
+  x_Time_Position = 0.90 * (float)CPG->CPG_RANGE_X_1; 
+  y_Time_Position = 0.90 * (float)CPG->CPG_RANGE_Y_1;
+  
+  if( Table->SUB_OUTPUT_VARIABLES > CPG->CPG__PANEL__X * CPG->CPG__PANEL__Y ){
+    printf(" Warning!!!\n Not enough subpanels to draw this quantity of variables\n");
+    printf(" in separate subplots\n");
+    Press_Key();
+    printf(" The program will exit\n");
+    exit(0);
+  }
+  Plot_Title[0] ='\0';
+  sprintf(Plot_Title, "Realization = %d\tTime = %5.2f", SAME_PLOT, Current_Time);
+  
+  Last_Time     = Current_Time; 
+  Current_Time  = Table->P->CPG->x_Time[No_of_POINTS-1];
+  sprintf(Plot_Time, "Time = %5.2f", Current_Time);
+  sprintf(Time_Eraser, "Time = %5.2f", Last_Time);  
+
+#if defined VERBOSE  
+  printf("Realization = %d\tTime = %5.2f\n", SAME_PLOT, Current_Time);
+  Press_Key();
+#endif   
+  
+  CPG->type_of_Width       = 4;   
+  cpgslct(No_of_DEVICE);
+  Plot_Title[0]  = '\0';
+  
+  for (k = 0; k<Table->SUB_OUTPUT_VARIABLES; k++) {
+    
+    if (SAME_PLOT == 0 ) {
+      if( MODEL_PARAMETERS_MAXIMUM < 10 )
+      sprintf(Plot_Title, "%s = %5.2f   %s = %5.2f   %s = %5.2f",
+	      Table->Symbol_Parameters[3],  Table->Default_Vector_Parameters[3], 
+	      Table->Symbol_Parameters[7],  Table->Default_Vector_Parameters[7], 
+	      Table->Symbol_Parameters[8],  Table->Default_Vector_Parameters[8]); 
+    }
+    
+    if (SAME_PLOT > 0) {
+      if (CPG->CPG__PANEL__X > 0 && CPG->CPG__PANEL__Y > 0 ){
+	Horizontal_Plot_Position  = k%CPG->CPG__PANEL__X + 1;
+	Vertical_Plot_Position    = k/CPG->CPG__PANEL__X + 1;
+      }
+      else {
+	Vertical_Plot_Position    = k%abs(CPG->CPG__PANEL__Y) + 1;
+	Horizontal_Plot_Position  = k/abs(CPG->CPG__PANEL__Y) + 1;;
+      }
+      cpgpanl(Horizontal_Plot_Position, Vertical_Plot_Position);
+      CPG->color_Index         = (2 + SAME_PLOT)%10;
+
+      // printf("k = %d\t Horizontal Position = %d\t Vertical Position = %d\n",
+      //	 k, Horizontal_Plot_Position, Vertical_Plot_Position);
+      // Press_Key(); 
+    }
+    
+    kk = Table->IO_VARIABLE_LIST[k];
+    CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( CPG, SAME_PLOT, 
+							  No_of_POINTS, 
+							  CPG->x_Time, 
+							  CPG->y_Time[k],
+							  "Time",
+							  Table->Variable_Name[kk], 
+							  Plot_Title,
+							  1, 1 );
+    cpgqch(&char_Size);
+    cpgsch(2.0);
+    cpgsci(0); 
+    cpgptxt(x_Time_Position, y_Time_Position, 0.0, 1.0, Time_Eraser);
+    cpgsci(1); 
+    cpgptxt(x_Time_Position, y_Time_Position, 0.0, 1.0, Plot_Time);
+    cpgsch(char_Size); 
+  }
+
+  free(Plot_Title); free(Plot_Time); free(Time_Eraser); 
 }
 #endif 

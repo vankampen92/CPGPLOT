@@ -24,8 +24,9 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( int REPLICATE,
 							   Parameter_Table * P,  
 							   int NO, double * x_Time, double ** y_Time );
 
-void C_P_G___S_U_B___P_L_O_T_T_I_N_G___E_R_R_O_R___B_A_R ( Parameter_Table * P,  
-							   int NO, double * x_Time, double ** y_Time,
+void C_P_G___S_U_B___P_L_O_T_T_I_N_G___E_R_R_O_R___B_A_R ( Parameter_Table * P, int SAME_PLOT, 
+							   int NO, double * x_Time,
+							   double ** y_Time,
 							   double ** y_Error);
 
 void C_P_G___S_U_B___P_L_O_T_T_I_N_G___E_R_R_O_R___B_A_R___D_R_I_V_E_R ( int DATA_POINTS, 
@@ -37,3 +38,7 @@ void P_L_O_T_T_I_N_G___P_A_R_A_M_E_T_R_I_C___C_O_N_F_I_G_U_R_A_T_I_O_N_S (Parame
 									  int n_0, 
 									  double ** X_1, 
 									  int n_1); 
+
+void C_P_G___S_U_B___P_L_O_T_T_I_N_G___n___P_L_O_T_S(int No_of_DEVICE, 
+						     int SAME_PLOT, int No_of_POINTS, 
+						     Parameter_Table * Table );
