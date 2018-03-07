@@ -228,8 +228,8 @@ int C_P_G___P_L_O_T_T_I_N_G___2d___C_O_N_T_O_U_R___S_U_R_F_A_C_E___D_R_I_V_E_R( 
 
       cpgcont(g, L__X,L__Y,  1,L__X, 1,L__Y, &c_level, automatic_line_style, tr);
       
-      if( i == 10 ){
-	int status = sprintf(contour_label, "%d", i);
+      // if( i == 10 ){
+	int status = sprintf(contour_label, "%g", c_level);
 	/* intval (input) : spacing along the contour between labels, in
 	   grid cells.
 	   minint (input) : contours that cross less than MININT cells
@@ -241,7 +241,7 @@ int C_P_G___P_L_O_T_T_I_N_G___2d___C_O_N_T_O_U_R___S_U_R_F_A_C_E___D_R_I_V_E_R( 
 	int minint = spatial_dimension;
 	
 	cpgconl(g, L__X,L__Y,  1,L__X, 1,L__Y, c_level, tr, contour_label, intval, minint);
-      }
+      // }
   }
 
   }

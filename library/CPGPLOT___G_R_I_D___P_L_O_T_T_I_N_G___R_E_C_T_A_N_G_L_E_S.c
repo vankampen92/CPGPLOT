@@ -119,8 +119,8 @@ int C_P_G___P_L_O_T_T_I_N_G___2d___C_O_L_O_R___R_E_C_T_A_N_G_L_E_S___D_R_I_V_E_R
 
     if (FIRST_PLOT == 0){  
       cpgpage();
-      cpgvstd();
-      //cpgsvp(0.0, 1.0, 0.0, 1.0);
+      // cpgvstd();
+      cpgsvp(0.15, 0.975, 0.125, 0.975);
     }
 
     cpgswin( x1, x2, y1, y2 );
@@ -152,22 +152,21 @@ int C_P_G___P_L_O_T_T_I_N_G___2d___C_O_L_O_R___R_E_C_T_A_N_G_L_E_S___D_R_I_V_E_R
   /*  END : Drawing the rectangles */
 
   if (FIRST_PLOT == 0){
-      cpgslw(2);
+      cpgslw(3);
       cpgsci(1);                          /* Back to default color  */
       
       cpgsch(1.0);                        /* Character size control */
       cpgmtxt("t",1.0,0.0,0.0, Title);    
 
       //cpgsch(0.7);                        /* Character size control */
-      cpgsch(0.8);                        /* Character size control */
+      cpgsch(1.25);                        /* Character size control */
       cpgbox( "bcntsi",0.0,0,       "bcntsiv",0.0,0 );
-      cpgsch(1.25);                     /* Character size control */
 
-      cpgsch(1.0);                        /* Character size control */
+      cpgsch(2.0);                        /* Character size control */
       //cpgmtxt("b", 3.0, 1.0,1.0, X_label); 
-      cpgmtxt("b", 3.0, 0.5,0.5, X_label); 
+      cpgmtxt("b", 2.20, 0.5,0.5, X_label); 
 
-      cpgsch(1.0);                        /* Character size control */
+      cpgsch(2.0);                        /* Character size control */
       //cpgmtxt("l", 3.0, 1.0,1.0, Y_label); 
       cpgmtxt("l", 3.0, 0.5,0.5, Y_label); 
       
