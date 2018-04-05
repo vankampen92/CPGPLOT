@@ -34,7 +34,9 @@ First you should install the libraries to meet the dependencies mentioned above.
       + ~$ make 
       + ~$ cd ~/CPGPLOT/library_basic_UTL/
       + ~$ make
+      
       This should create the corresponding files libda_cpgplot_XY_GRID_FILE.a and libda_cpgplot_BASIC.a
+  
   + #### 5. Tests:
   In order to test if pgplot, plplot and CPGPLOT are correctly installed in your machine, you go to the directory ~/CPGPLOT_EXAMPLES. In that directory, there is a simple example of how to use the CPGPLOT library. You build it by typing:
 
