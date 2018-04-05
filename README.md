@@ -19,7 +19,7 @@ This is a set of functions written in C relying on cpgplot primitives from pgplo
 
 ### How do I get set up? ###
 
-First you should install the libraries to meet the dependencies mentioned above. Look for pgplot and libplplot12 in your usual package handler. Notice that the linking command in makefiles of code you may develop should contains, at least, the following libraries:
+First you should install the libraries to meet the dependencies mentioned above. Look for pgplot and libplplot12 in your usual package handler. Notice that the linking command in makefiles of code you may develop should contain, at least, the following libraries:
 
 * -lX11 -lpng -lplplotd -lpgplot -lcpgplot
 * -lda_cpgplot_XY_GRID_FILE -lda_cpgplot_BASIC
