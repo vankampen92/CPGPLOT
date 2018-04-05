@@ -10,7 +10,7 @@ This is a set of functions written in C relying on cpgplot primitives from pgplo
 
 ### What is this repository for? ###
 
-* This repository includes code to produce high quality 2D plots based on pgplot and implement some extran examples from PLPLOT to produce 3D plots. Most library functions are simple wrappers for pgplot native functions and call the respective C bindings (cpgplot). The library is based on two basic data structures: 'Parameter_CPGPLOT' and 'Parameter_FILE'.  Both data structures are defined in the header files Parameter_CPGPLOT.h and Parameter_FILE.h, respectively. The structure 'Parameter_CPGPLOT' has 'Parameter_FILE' as one of its members. The first struct packs fine-tunning plotting parameters. The second one encapsulates information about the files containing the data to plot. Both structures handle a bunch of input parameters such as, for instance, the files to read, the characteristics of the plot, etc. All these arguments are given as input arguments as invoking the main program to produce the plots. A variable usually named CPG of type 'Parameter_CPGPLOT' is passed on as a pointer to each library function when they are called from parent code. 
+* This repository includes code to produce high quality 2D plots based on pgplot. In addition, it implements some extra examples from PLPLOT to produce 3D plots. Most library functions are simple wrappers for pgplot native functions and call the respective C bindings functions (cpgplot). The library is based on two basic data structures: 'Parameter_CPGPLOT' and 'Parameter_FILE'.  Both data structures are defined in the header files Parameter_CPGPLOT.h and Parameter_FILE.h, respectively. The structure 'Parameter_CPGPLOT' has 'Parameter_FILE' as one of its members. The first struct packs fine-tunning plotting parameters. The second one encapsulates information about the files containing the data to plot. Both structures handle a bunch of input parameters such as, for instance, the files to read, the characteristics of the plot, etc. All these arguments can be given as input arguments as invoking the main program to produce the plots. A variable usually named CPG of type 'Parameter_CPGPLOT' is passed on as a pointer to each library function when they are called from parent code. 
   
 * Version
 0.0.99
@@ -19,8 +19,7 @@ This is a set of functions written in C relying on cpgplot primitives from pgplo
 
 ### How do I get set up? ###
 
-First you should install the libraries to meet the dependencies mentioned above. Look for pgplot and libplplot12 in your usual package handler.
-Notice that the linking command from most makefiles contains, at least, the following libraries:
+First you should install the libraries to meet the dependencies mentioned above. Look for pgplot and libplplot12 in your usual package handler. Notice that the linking command in makefiles of code you may develop should contains, at least, the following libraries:
 
 * -lX11 -lpng -lplplotd -lpgplot -lcpgplot
 * -lda_cpgplot_XY_GRID_FILE -lda_cpgplot_BASIC
