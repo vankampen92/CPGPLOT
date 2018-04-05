@@ -46,7 +46,7 @@ First you should install the libraries to meet the dependencies mentioned above.
 
      + ~/PROJECT_CPGPLOT_EXAMPLES/PLOT -G29 ?
 
-     and see the different available graphic formats in which plots can be saved. Notice that sometimes the value for these input arguments is overriden by the internal program code. When this happens, it is for a good reason. Please check the code to understand why. If you are in mood, make moodfications at your own risk. Be creative.			       	   
+     and see the different available graphic formats in which plots can be saved. The value for these input arguments can be overriden by the internal program code. You may have a good reason to do it, for instance, the necessity to produce several plots with different parameters as program executions proceeds. If you are in the mood, make moodfications at your own risk. Be creative.			       	   
 
 ### Contribution guidelines ###
 
