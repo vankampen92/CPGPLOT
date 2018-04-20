@@ -49,6 +49,28 @@ void C_P_G___P_L_O_T_T_I_N_G___M_A_T_R_I_X___S_H_A_D_E_S( Parameter_CPGPLOT * CP
 							  double W_min, double W_MAX, 
 							  double i_PLOT );
 
+void C_P_G___P_L_O_T_T_I_N_G___2d___G_R_I_D___S_H_A_D_E_S___F_R_A_M_E( Parameter_CPGPLOT * CPG,
+								       double * W, 
+								       int FIRST_PLOT,
+								       int W_SCALE, 
+								       double W_min, double W_MAX, 
+								       double i_PLOT );
+
+int C_P_G___P_L_O_T_T_I_N_G___2d___C_O_L_O_R___S_U_R_F_A_C_E___D_R_I_V_E_R___F_R_A_M_E ( int FIRST_PLOT, 
+									     double * W_RANGE,
+									     double * ORIGIN, 
+									     float * g,
+									     int L__X, int L__Y,
+									     double X_d, double Y_d,
+									     char * X_label, 
+									     char * Y_label, 
+									     char * W_label,
+									     char * Title, 
+									     char * Side, 
+									     int COLOR, 
+									     float BRIGHT, 
+									     float CONTRA ); 
+
 void C_P_G___P_L_O_T_T_I_N_G___X_Y_Z___S_H_A_D_E_S( Parameter_CPGPLOT * CPG, 
 						    double * x_Data, 
 						    int No_of_POINTS_1, 
