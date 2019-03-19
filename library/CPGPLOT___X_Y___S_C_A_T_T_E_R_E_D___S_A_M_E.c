@@ -48,9 +48,9 @@ void CPGPLOT___X_Y___S_C_A_T_T_E_R_E_D___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT *
   type_of_Line   = CPG->type_of_Line;
   type_of_Width  = CPG->type_of_Width;
   type_of_Symbol = CPG->type_of_Symbol; 
-  
+
   cpgsls(type_of_Line);
-  cpgslw(type_of_Width); 
+  cpgslw(type_of_Width);
   /*   END:   Initialization of colors, lines, and symbols                      */
 
   /* BEGIN : Preparing cpgplot representation: Ranges and float conversion */ 
@@ -60,9 +60,6 @@ void CPGPLOT___X_Y___S_C_A_T_T_E_R_E_D___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT *
   
   X_RANGE[0] = CPG->CPG_RANGE_X_0;   X_RANGE[1] = CPG->CPG_RANGE_X_1;
   Y_RANGE[0] = CPG->CPG_RANGE_Y_0;   Y_RANGE[1] = CPG->CPG_RANGE_Y_1;
-
-  A_X_E_S___R_A_N_G_E_S( NO_of_POINTS, x_Data, X_RANGE, SCALE_X, Range_x );
-  A_X_E_S___R_A_N_G_E_S( NO_of_POINTS, y_Data, Y_RANGE, SCALE_Y, Range_y );
  
   float * xs = (float *)malloc( sizeof(float) * NO_of_POINTS );
   float * ys = (float *)malloc( sizeof(float) * NO_of_POINTS );
@@ -73,6 +70,10 @@ void CPGPLOT___X_Y___S_C_A_T_T_E_R_E_D___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT *
   cpgsch(2.0);  // cpgsch(1.2);
   
   if (SAME_PLOT == 0 ){
+    
+    A_X_E_S___R_A_N_G_E_S( NO_of_POINTS, x_Data, X_RANGE, SCALE_X, Range_x );
+    A_X_E_S___R_A_N_G_E_S( NO_of_POINTS, y_Data, Y_RANGE, SCALE_Y, Range_y );
+    
     cpg_XY_scattered(NO_of_POINTS, xs, ys, Range_x, Range_y, 
 		     CPG->color_Index, CPG->type_of_Symbol, 
 		     X_label, Y_label, Title);

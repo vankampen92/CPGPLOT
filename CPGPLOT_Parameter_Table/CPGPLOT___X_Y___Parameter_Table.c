@@ -8,7 +8,9 @@
    it is done in a model specific header file (MODEL.h).  
 */ 
 #define NO_TITLES
-// #define NO_STATIONARY_POINT_REPRESENTATION
+// #define STATIONARY_POINT_REPRESENTATION
+// Alternatively, this variable definition controling compilation
+// can also be defined in the corresponding make file.   
 
 #if defined CPGPLOT_REPRESENTATION
 void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Parameter_Table * P,  
@@ -68,12 +70,12 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Paramet
     printf("Title: %s\nX axes: %s\nY axes: %s\n\n", Title, X_label, Y_label[i]);
 #endif
     
-    P->CPG->type_of_Symbol = 9; P->CPG->color_Index = 4;
+    P->CPG->type_of_Symbol = 1; P->CPG->color_Index = 4;  P->CPG->type_of_Line = 1; //P->CPG->type_of_Symbol = 9;
     CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_C_A_L_E ( P->CPG,
 						  NO, x_Time, y_Time[i],    
 						  X_label, Y_label[i], Title,
 						  SCALE_X, SCALE_Y );
-#ifndef NO_STATIONARY_POINT_REPRESENTATION   
+#if defined STATIONARY_POINT_REPRESENTATION   
     /* B E G I N :   Plotting the stationary assymptotic behavior      */    
     k =  P->IO_VARIABLE_LIST[i];
     /* L O W E R   S O L U T I O N : */
@@ -82,7 +84,7 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Paramet
 						       0.0, P);
     for ( j = 1; j < NO; j++ ) y_Stationarity[i][j] = y_Stationarity[i][0]; 
  
-    P->CPG->type_of_Symbol = 1; P->CPG->color_Index = 8;
+    P->CPG->type_of_Symbol = 1; P->CPG->color_Index = 8; P->CPG->type_of_Line = 3;
     CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( P->CPG, 1,
 						  NO, x_Time, y_Stationarity[i],    
 						  X_label, Y_label[i], Title,
@@ -93,7 +95,7 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Paramet
 						       0.0, P);
     for ( j = 1; j < NO; j++ ) y_Stationarity[i][j] = y_Stationarity[i][0]; 
  
-    P->CPG->type_of_Symbol = 1; P->CPG->color_Index = 8;
+    P->CPG->type_of_Symbol = 1; P->CPG->color_Index = 8; P->CPG->type_of_Line = 3;
     CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( P->CPG, 1,
 						  NO, x_Time, y_Stationarity[i],    
 						  X_label, Y_label[i], Title,

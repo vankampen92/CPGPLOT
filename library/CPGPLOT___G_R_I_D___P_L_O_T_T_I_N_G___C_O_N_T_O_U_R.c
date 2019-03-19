@@ -226,7 +226,17 @@ int C_P_G___P_L_O_T_T_I_N_G___2d___C_O_N_T_O_U_R___S_U_R_F_A_C_E___D_R_I_V_E_R( 
       if ( AUTOMATIC_CONTOUR == 0 ) automatic_line_style = -1;
       else                          automatic_line_style = +1; 
 
+      if (i == 0) {
+	cpgsls(2);  /* 2: Dashed */
+	cpgslw(10);
+      }
+      
       cpgcont(g, L__X,L__Y,  1,L__X, 1,L__Y, &c_level, automatic_line_style, tr);
+
+      if (i == 0) {
+	cpgsls(1);  /* 1: Non-Dashed */
+	cpgslw(1);
+      }
       
       // if( i == 10 ){
 	int status = sprintf(contour_label, "%g", c_level);
