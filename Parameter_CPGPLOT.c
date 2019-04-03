@@ -78,6 +78,7 @@ void P_A_R_A_M_E_T_E_R___C_P_G_P_L_O_T___F_R_E_E( Parameter_CPGPLOT * C, int NO)
   int i;
 
   P_A_R_A_M_E_T_E_R___F_I_L_E___F_R_E_E ( C->CPG_File );
+  free(C->CPG_File);
   
   for (i=0; i<NO; i++){
     free (C->y_Time[i]);
@@ -104,7 +105,8 @@ Parameter_CPGPLOT * A_C_T_I_V_A_T_E___C_P_G_P_L_O_T (int No_of_OUTPUT_VARIABLES,
     /*   exit(0); */
   }
   
-  int DEVICE_NUMBER = cpgopen( cpgopen_argument );
+  int DEVICE_NUMBER;
+  DEVICE_NUMBER = cpgopen( cpgopen_argument );
   if (DEVICE_NUMBER <= 0 ) {
     printf(" Graphic device cannot be opened\n");
     exit(1);
