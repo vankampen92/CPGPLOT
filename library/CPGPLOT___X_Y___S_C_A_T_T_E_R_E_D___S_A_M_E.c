@@ -39,11 +39,16 @@ void CPGPLOT___X_Y___S_C_A_T_T_E_R_E_D___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT *
   int i;
 
   /* BEGIN:   Defining symbols, lines, ranges, etc                              */
-  static int color_Index;    
-  static int type_of_Line;   
-  static int type_of_Width;  
-  static int type_of_Symbol; 
+  /* static int color_Index;     */
+  /* static int type_of_Line;    */
+  /* static int type_of_Width;   */
+  /* static int type_of_Symbol;  */
 
+  int color_Index;    
+  int type_of_Line;   
+  int type_of_Width;  
+  int type_of_Symbol;
+  
   color_Index    = CPG->color_Index;
   type_of_Line   = CPG->type_of_Line;
   type_of_Width  = CPG->type_of_Width;
@@ -84,14 +89,15 @@ void CPGPLOT___X_Y___S_C_A_T_T_E_R_E_D___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT *
     
     /* CPG->type_of_Symbol = (type_of_Symbol % 5);                         */
 
-    assert(CPG->color_Index < 16);   assert(CPG->type_of_Symbol < 32);
+    /* assert(CPG->color_Index < 16);   assert(CPG->type_of_Symbol < 32);  */
+    
     cpg_XY_same_scattered(NO_of_POINTS, xs, ys,
 			  CPG->color_Index, CPG->type_of_Symbol);
     
     // printf( "color_Index = %d, type_of_Line = %d, type_of_Width = %d, type_of_Symbol = %d\n",
     //	       CPG->color_Index, CPG->type_of_Line, CPG->type_of_Width, CPG->type_of_Symbol ); 
     
-    color_Index++; type_of_Line++; type_of_Width++; type_of_Symbol++; 
+    // color_Index++; type_of_Line++; type_of_Width++; type_of_Symbol++; 
   }
   
   cpgsls(1);

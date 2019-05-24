@@ -2,40 +2,40 @@
 
 	      case 'G': 
               if(argv[argcount][2]=='0')
-		sscanf(argv[argcount+1],"%d",&CPG__PANEL__X);
+		fprintf(fp,"-G0  %d  ",Table->CPG__PANEL__X);
 	      else if(argv[argcount][2]=='1') {
 		if(argv[argcount][3]=='\0'){
-		  sscanf(argv[argcount+1],"%d",&CPG__PANEL__Y);
+		  fprintf(fp,"-G1  %d  ",Table->CPG__PANEL__Y);
 		}
 		else if(argv[argcount][3]=='0'){
-		  sscanf(argv[argcount+1],"%d",&type_of_Line);
+		  fprintf(fp,"-G10  %d  ",Table->type_of_Line);
 		}
 		else if(argv[argcount][3]=='1'){
-		  sscanf(argv[argcount+1],"%d",&type_of_Width);
+		  fprintf(fp,"-G11  %d  ",Table->type_of_Width);
 		}
 		else if(argv[argcount][3]=='2'){
-		  sscanf(argv[argcount+1],"%d",&type_of_Symbol);
+		  fprintf(fp,"-G12  %d  ",Table->type_of_Symbol);
 		}
                 else if(argv[argcount][3]=='3'){
-		  sscanf(argv[argcount+1],"%d",&CPG_LABEL_TYPES);
+		  fprintf(fp,"-G13  %d  ",Table->CPG_LABEL_TYPES);
 		}
 		else if(argv[argcount][3]=='4'){
-		  sscanf(argv[argcount+1],"%s", Title);
+		  fprintf(fp,"-G14 %s", Title);
 		}
 		else if(argv[argcount][3]=='5'){
-		  sscanf(argv[argcount+1],"%s", X_label);
+		  fprintf(fp,"-G15 %s", X_label);
 		}
                 else if(argv[argcount][3]=='6'){
-		  sscanf(argv[argcount+1],"%s", Y_label);
+		  fprintf(fp,"-G16 %s", Y_label);
 		}
 		else if(argv[argcount][3]=='7'){
-		  sscanf(argv[argcount+1],"%s", W_label);
+		  fprintf(fp,"-G17 %s", W_label);
 		}
 		else if(argv[argcount][3]=='8'){
-		  sscanf(argv[argcount+1],"%d", &x_GRID);
+		  fprintf(fp,"-G18  %d  ", Table->x_GRID);
 		}
 		else if(argv[argcount][3]=='9'){
-		  sscanf(argv[argcount+1],"%d", &y_GRID);
+		  fprintf(fp,"-G19  %d  ", Table->y_GRID);
 		}
 		else {
 		  printf(" Some error reading CPG parameters\n");
@@ -46,37 +46,37 @@
 	      } 		
               else if(argv[argcount][2]=='2') {
 		if(argv[argcount][3]=='\0'){
-		  sscanf(argv[argcount+1],"%d", &CPG_SCALE_X);
+		  fprintf(fp,"-G2  %d  ", Table->CPG_SCALE_X);
 		}
 		else if(argv[argcount][3]=='0'){
-		  sscanf(argv[argcount+1],"%lf",&X_Dimension);
+		  fprintf(fp,"-G20  %g  ",Table->X_Dimension);
 		}
 		else if(argv[argcount][3]=='1'){
-		  sscanf(argv[argcount+1],"%lf",&Y_Dimension);
+		  fprintf(fp,"-G21  %g  ",Table->Y_Dimension);
 		}
 		else if(argv[argcount][3]=='2'){
-		  sscanf(argv[argcount+1],"%lf",&ORIGIN_X);
+		  fprintf(fp,"-G22  %g  ",Table->ORIGIN_X);
 		}
 		else if(argv[argcount][3]=='3'){
-		  sscanf(argv[argcount+1],"%lf",&ORIGIN_Y);
+		  fprintf(fp,"-G23  %g  ",Table->ORIGIN_Y);
 		}
 		else if(argv[argcount][3]=='4'){
-		  sscanf(argv[argcount+1],"%d", &CPG_SCALE_W);
+		  fprintf(fp,"-G24  %d  ", Table->CPG_SCALE_W);
 		}
 		else if(argv[argcount][3]=='5'){
-		  sscanf(argv[argcount+1],"%lf", &CPG_RANGE_W_0);
+		  fprintf(fp,"-G25  %g  ", Table->CPG_RANGE_W_0);
 		}
 		else if(argv[argcount][3]=='6'){
-		  sscanf(argv[argcount+1],"%lf", &CPG_RANGE_W_1);
+		  fprintf(fp,"-G26  %g  ", Table->CPG_RANGE_W_1);
 		}
 		else if(argv[argcount][3]=='7'){
-		  sscanf(argv[argcount+1],"%d", &AUTOMATIC_CONTOUR);
+		  fprintf(fp,"-G27  %d  ", Table->AUTOMATIC_CONTOUR);
 		}
 		else if(argv[argcount][3]=='8'){
-		  sscanf(argv[argcount+1],"%d", &NC);
+		  fprintf(fp,"-G28  %d  ", Table->NC);
 		}
                 else if(argv[argcount][3]=='9'){
-		  sscanf(argv[argcount+1],"%s", CPG_DRIVER_NAME );
+		  fprintf(fp,"-G29 %s", CPG_DRIVER_NAME );
 		}
 		else {
 		  printf(" Some error reading CPG parameters\n");
@@ -87,25 +87,25 @@
 	      }
               else if(argv[argcount][2]=='3') {
                 if(argv[argcount][3]=='\0'){
-		  sscanf(argv[argcount+1],"%lf",&CPG_RANGE_X_0);
+		  fprintf(fp,"-G3  %g  ",Table->CPG_RANGE_X_0);
                 }
                 else if(argv[argcount][3]=='0'){
-                  sscanf(argv[argcount+1],"%s", SIDE);
+                  fprintf(fp,"-G30 %s", SIDE);
                 }
 		else if(argv[argcount][3]=='1'){
-                  sscanf(argv[argcount+1],"%d", &Type_of_COLOR_SHADING);
+                  fprintf(fp,"-G31  %d  ", Table->Type_of_COLOR_SHADING);
                 }
 		else if(argv[argcount][3]=='2'){
-                  sscanf(argv[argcount+1],"%f", &Type_of_BRIGHT);
+                  fprintf(fp,"-G32 %f", Table->Type_of_BRIGHT);
                 }
 		else if(argv[argcount][3]=='3'){
-                  sscanf(argv[argcount+1],"%f", &Type_of_CONTRA);
+                  fprintf(fp,"-G33 %f", Table->Type_of_CONTRA);
                 }
 		else if(argv[argcount][3]=='4'){
-                  sscanf(argv[argcount+1], "%s", X_axis_Control);
+                  fprintf(fp, "-G34 %s", X_axis_Control);
                 }
 		else if(argv[argcount][3]=='5'){
-                  sscanf(argv[argcount+1], "%s", Y_axis_Control);
+                  fprintf(fp, "-G35 %s", Y_axis_Control);
                 }
                 else {
                   printf(" Some error reading CPG parameters\n");
@@ -115,17 +115,17 @@
                 }
 	      }
               else if(argv[argcount][2]=='4')
-		sscanf(argv[argcount+1],"%lf",&CPG_RANGE_X_1);
+		fprintf(fp,"-G4  %g  ",Table->CPG_RANGE_X_1);
               else if(argv[argcount][2]=='5')
-		sscanf(argv[argcount+1],"%d",&CPG_SCALE_Y);
+		fprintf(fp,"-G5  %d  ",Table->CPG_SCALE_Y);
               else if(argv[argcount][2]=='6')
-		sscanf(argv[argcount+1],"%lf",&CPG_RANGE_Y_0);
+		fprintf(fp,"-G6  %g  ",Table->CPG_RANGE_Y_0);
               else if(argv[argcount][2]=='7')
-		sscanf(argv[argcount+1],"%lf",&CPG_RANGE_Y_1);
+		fprintf(fp,"-G7  %g  ",Table->CPG_RANGE_Y_1);
               else if(argv[argcount][2]=='8')
-		sscanf(argv[argcount+1],"%d", &CPG_LINE_TYPES);
+		fprintf(fp,"-G8  %d  ", Table->CPG_LINE_TYPES);
               else if(argv[argcount][2]=='9')
-		sscanf(argv[argcount+1],"%d", &color_Index);
+		fprintf(fp,"-G9  %d  ", Table->color_Index);
               else{ 
 		printf("  CPG argument parameters are only:\n");
 		printf(" -G0 [ ] -G1 [ ] ... ... -G35 [ ]\n");
