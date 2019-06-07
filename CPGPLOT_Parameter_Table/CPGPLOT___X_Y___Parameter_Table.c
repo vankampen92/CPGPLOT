@@ -38,7 +38,7 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Paramet
   /*********************************************************************/
   for(i=0; i < P->SUB_OUTPUT_VARIABLES; i++){
     k = P->IO_VARIABLE_LIST[i]; 
-    Y_label[i]  = P->Variable_Name[k]; 
+    Y_label[i]  = P->Output_Variable_Name[k]; 
   }
 
   double ** y_Stationarity = (double **)calloc( P->SUB_OUTPUT_VARIABLES, sizeof(double *) );
@@ -139,7 +139,7 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G ( Parameter_Table * P,
   /*********************************************************************/
   for(i=0; i < P->SUB_OUTPUT_VARIABLES; i++){
     k = P->IO_VARIABLE_LIST[i]; 
-    Y_label[i]  = P->Variable_Name[k]; 
+    Y_label[i]  = P->Output_Variable_Name[k]; 
   }
   for (i = 0; i < P->SUB_OUTPUT_VARIABLES; i++) {
     
@@ -182,8 +182,8 @@ void C_P_G___P_H_A_S_E____D_I_A_G_R_A_M ( Parameter_Table * P,
   int i_0 = P->IO_VARIABLE_LIST[k_0];
   int i_1 = P->IO_VARIABLE_LIST[k_1];
 
-  Y_label[0]  = P->Variable_Name[i_0]; 
-  Y_label[1]  = P->Variable_Name[i_1];
+  Y_label[0]  = P->Output_Variable_Name[i_0]; 
+  Y_label[1]  = P->Output_Variable_Name[i_1];
  
   Title[0] = '\0';
   p_Title = strcat( Title, " P h a s e   D i a g r a m " );
@@ -213,8 +213,8 @@ void C_P_G___P_H_A_S_E____D_I_A_G_R_A_M___S_A_M_E ( Parameter_Table * P,
   int i_0 = P->IO_VARIABLE_LIST[k_0];
   int i_1 = P->IO_VARIABLE_LIST[k_1];
 
-  Y_label[0]  = P->Variable_Name[i_0]; 
-  Y_label[1]  = P->Variable_Name[i_1];
+  Y_label[0]  = P->Output_Variable_Name[i_0]; 
+  Y_label[1]  = P->Output_Variable_Name[i_1];
  
   Title[0] = '\0';
   p_Title = strcat( Title, " P h a s e   D i a g r a m " );
@@ -265,7 +265,7 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___D_U_A_L ( Parameter_Table * P,
   /*********************************************************************/
   for(i=0; i < P->SUB_OUTPUT_VARIABLES; i++){
     k = P->IO_VARIABLE_LIST[i]; 
-    Y_label[i]  = P->Variable_Name[k]; 
+    Y_label[i]  = P->Output_Variable_Name[k]; 
   }
   for (i = 0; i < P->SUB_OUTPUT_VARIABLES; i++) {
     
@@ -331,7 +331,7 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( int REPLICATE,
   /*********************************************************************/
   for(i=0; i < P->SUB_OUTPUT_VARIABLES; i++){
     k = P->IO_VARIABLE_LIST[i]; 
-    Y_label[i]  = P->Variable_Name[k]; 
+    Y_label[i]  = P->Output_Variable_Name[k]; 
   }
   for (i = 0; i < P->SUB_OUTPUT_VARIABLES; i++) {
 	
@@ -417,7 +417,7 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___E_R_R_O_R___B_A_R ( Parameter_Table * P, 
   /*********************************************************************/
   for(i=0; i < P->SUB_OUTPUT_VARIABLES; i++){
     k = P->IO_VARIABLE_LIST[i]; 
-    Y_label[i]  = P->Variable_Name[k]; 
+    Y_label[i]  = P->Output_Variable_Name[k]; 
   }
 
   P->CPG->type_of_Width       = 4;
@@ -565,7 +565,7 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___n___P_L_O_T_S(int No_of_DEVICE,
 							  CPG->x_Time, 
 							  CPG->y_Time[k],
 							  "Time",
-							  Table->Variable_Name[kk], 
+							  Table->Output_Variable_Name[kk], 
 							  Plot_Title,
 							  1, 1 );
     cpgqch(&char_Size);

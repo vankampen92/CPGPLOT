@@ -1,4 +1,4 @@
-              case 'F': /* Name of the file to be read */
+case 'F': /* Name of the file to be read */
               if(argv[argcount][2]=='n') { 
               /* No of FILES to READ */
                 sscanf(argv[argcount+1],"%d", &No_of_FILES);
