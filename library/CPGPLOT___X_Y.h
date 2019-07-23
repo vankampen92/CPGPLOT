@@ -169,4 +169,5 @@ void CPGPLOT___X_Y___P_L_O_T_T_I_N_G___2DIR___E_R_R_O_R___B_A_R_S ( Parameter_CP
 								    double ** xn_Data, 
 								    double * y_Data, 
 								    double ** yn_Data, 
-								    int BAR_TIP_LENGTH );
+								    int BAR_TIP_LENGTH,
+								    int HORIZONTAL );

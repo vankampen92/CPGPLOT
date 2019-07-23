@@ -107,6 +107,7 @@ Parameter_CPGPLOT * A_C_T_I_V_A_T_E___C_P_G_P_L_O_T (int No_of_OUTPUT_VARIABLES,
   
   int DEVICE_NUMBER;
   DEVICE_NUMBER = cpgopen( cpgopen_argument );
+
   if (DEVICE_NUMBER <= 0 ) {
     printf(" Graphic device cannot be opened\n");
     exit(1);

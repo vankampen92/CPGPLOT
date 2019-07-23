@@ -6,9 +6,13 @@ void CPGPLOT___X_Y___P_L_O_T_T_I_N_G___2DIR___E_R_R_O_R___B_A_R_S ( Parameter_CP
 								    double ** xn_Data, 
 								    double * y_Data, 
 								    double ** yn_Data, 
-								    int BAR_TIP_LENGTH )
+								    int BAR_TIP_LENGTH,
+								    int HORIZONTAL)
 { 
   /* This function draws error bars both in the direccion of X and Y axis.
+     If only vertical bars are needed, please,  pass HORIZONTAL equal to zero. Otherwise, 
+     if bars are required in both directions, please pass HORIZONTAL equal to 1. 
+     
      It requires a previous definition of the plotting window as well as axis labels and 
      graph title. For instance, this should be achieved by previously calling:
      SAME = 0;
@@ -38,20 +42,25 @@ void CPGPLOT___X_Y___P_L_O_T_T_I_N_G___2DIR___E_R_R_O_R___B_A_R_S ( Parameter_CP
     Y[i] = (float)y_Data[i];
   }
 
-  int color_Index   = CPG->color_Index;
-  int type_of_Line  = CPG->type_of_Line;
-  int type_of_Width = CPG->type_of_Width;
+  int color_Index    = CPG->color_Index;
+  int type_of_Line   = CPG->type_of_Line;
+  int type_of_Width  = CPG->type_of_Width;
+  int type_of_Symbol = CPG->type_of_Symbol; 
   
   cpgsci(color_Index);  
   cpgslw(type_of_Width);
   cpgsls(type_of_Line); 
 
-  for(i=0; i<N; i++) { E[i] = (float)xn_Data[0][i]; };
-  cpgerrb(3, N, X, Y, E, BAR_TIP_LENGTH );
-
-  for(i=0; i<N; i++) { E[i] = (float)xn_Data[1][i]; };
-  cpgerrb(1, N, X, Y, E, BAR_TIP_LENGTH );
-
+  cpgpt(N, X, Y, type_of_Symbol);
+  
+  if (HORIZONTAL == 1) { 
+    for(i=0; i<N; i++) { E[i] = (float)xn_Data[0][i]; };
+    cpgerrb(3, N, X, Y, E, BAR_TIP_LENGTH );
+    
+    for(i=0; i<N; i++) { E[i] = (float)xn_Data[1][i]; };
+    cpgerrb(1, N, X, Y, E, BAR_TIP_LENGTH );
+  }
+  
   for(i=0; i<N; i++) { E[i] = (float)yn_Data[0][i]; };
   cpgerrb(4, N, X, Y, E, BAR_TIP_LENGTH );
 
