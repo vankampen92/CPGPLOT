@@ -20,7 +20,7 @@ void CPGPLOT___X_Y___H_I_S_T_O_G_R_A_M (Parameter_CPGPLOT * CPG,
   
   float ch;
   cpgqch( &ch );
-  cpgsch(1.5 * ch);
+  cpgsch(2.0 * ch);
   
   cpgenv(Range_x[0], Range_x[1], Range_y[0], Range_y[1], 0, 1);
   cpglab(X_Label, Y_Label, Title);

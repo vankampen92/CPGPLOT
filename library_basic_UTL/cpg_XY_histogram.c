@@ -6,11 +6,13 @@ void cpg_XY_histogram (int n, float * data, int n_BINS,
 		       char * X_Label, char * Y_Label, char * Title )
 {
   /* Draw a histogram of N values of a variable in array              */
-  /* DATA(1...N) in the range DATMIN to DATMAX using NBIN bins.  Note */
-  /* that array elements which fall exactly on the boundary between   */
-  /* two bins will be counted in the higher bin rather than the       */
-  /* lower one; and array elements whose value is less than DATMIN or */
-  /* greater than or equal to DATMAX will not be counted at all.      */
+  /* data(1...N) in the range DATMIN to DATMAX using NBIN bins. The   */
+  /* range ind defined in input argument Range_x[]. Note that array   */
+  /* elements which fall exactly on the boundary between two bins     */
+  /* will be counted in the higher bin rather than the lower one      */
+  /* Array elements whose value is less than DATMIN (Range_x[0])      */
+  /* or ater than or equal to DATMAX (Range_x[1]) will not be counted */
+  /* at all.                                                          */
 
   int PGFLAG  = 1; 
   /* if PGFLAG = 1, the histogram is plotted in the                   */

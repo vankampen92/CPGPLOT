@@ -72,7 +72,7 @@ void CPGPLOT___X_Y___S_C_A_T_T_E_R_E_D___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT *
   for(i=0; i<NO_of_POINTS; i++){ xs[i] = (float)x_Data[i]; ys[i] = (float)y_Data[i]; }
   /*   END : Float conversion completed */
 
-  cpgsch(2.0);  // cpgsch(1.2);
+  // cpgsch(2.0);
   
   if (SAME_PLOT == 0 ){
     

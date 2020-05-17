@@ -1,10 +1,10 @@
 #include "../CPGPLOT_HEADER.h"
 
-int CPGPLOT___X_Y_n___P_L_O_T_T_I_N_G ( Parameter_CPGPLOT * CPG, 
-					int NO_of_POINTS, int n_XY, 
-					double * x_Data, double ** y_Data, 
-					char * X_label, char * Y_label, char * Title,
-					int SCALE_X, int SCALE_Y )
+int CPGPLOT___X_Y_n___P_L_O_T_T_I_N_G( Parameter_CPGPLOT * CPG, 
+				       int NO_of_POINTS, int n_XY, 
+				       double * x_Data, double ** y_Data, 
+				       char * X_label, char * Y_label, char * Title,
+				       int SCALE_X, int SCALE_Y )
 {
   /* This function produces a simple (x, y) two-dimensional plot */
   /* This function acts as a wrapper of cpg_XYn_plot(...).        */
@@ -39,6 +39,7 @@ int CPGPLOT___X_Y_n___P_L_O_T_T_I_N_G ( Parameter_CPGPLOT * CPG,
   double X_RANGE[2], Y_RANGE[2];
   int i,j;
   double y_min, y_MAX;
+  
   /* BEGIN : Preparing cpgplot representation 
    *         Defining symbols, lines, ranges, etc  
    *         Allocating and calculating non-variable float vectors for cpgplot */
@@ -47,6 +48,7 @@ int CPGPLOT___X_Y_n___P_L_O_T_T_I_N_G ( Parameter_CPGPLOT * CPG,
   /* SCALE_X = 0: x-axis automatic scale
      SCALE_Y = 0: y-axis automatic scale 
   */
+  
   /* BEGIN : Defining the vector of color, type of line, type of width
      and type of symbol                                                        */
 
@@ -82,6 +84,21 @@ int CPGPLOT___X_Y_n___P_L_O_T_T_I_N_G ( Parameter_CPGPLOT * CPG,
     type_of_Line[j] = 1;
     type_of_Width[j] = 1;
     type_of_Symbol[j] = 1;
+  }
+
+  if (n_XY == 5 || n_XY == 3) { // 5 or 3 percentiles...
+    if ( n_XY == 5 ) { 
+      color_Index[0] = 12;   color_Index[1] = 11;   color_Index[2] = 4;    color_Index[3] = 11;    color_Index[4] = 12; 
+      type_of_Line[0] = 2;   type_of_Line[1] = 2;   type_of_Line[2] = 1;   type_of_Line[3] = 2;   type_of_Line[4] = 2;
+      type_of_Width[0] = 1;  type_of_Width[1] = 3;  type_of_Width[2] = 5;  type_of_Width[3] = 3;  type_of_Width[4] = 1;
+      type_of_Symbol[0] = 1; type_of_Symbol[1] = 1; type_of_Symbol[2] = 1; type_of_Symbol[3] = 1; type_of_Symbol[4] = 1;
+    }
+    else {
+      color_Index[0] = 11;    color_Index[1] = 4;    color_Index[2] = 11;    
+      type_of_Line[0] = 2;   type_of_Line[1] = 1;   type_of_Line[2] = 2;   
+      type_of_Width[0] = 3;  type_of_Width[1] = 5;  type_of_Width[2] = 3;  
+      type_of_Symbol[0] = 1; type_of_Symbol[1] = 1; type_of_Symbol[2] = 1; 
+    }
   }
   /*   END : Defining color, lines and so on * * * * * * * * * * * * */ 
 

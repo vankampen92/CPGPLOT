@@ -1,6 +1,6 @@
 #include "cpgplot_headers.h"
 
-#define SHRINKING_FACTOR_BOX 0.8
+#define SHRINKING_FACTOR_BOX 0.7
 
 void cpg_box_plot(int SAME_PLOT, 
 		  int n, float *xs, float **ys, int np, 
@@ -32,14 +32,15 @@ void cpg_box_plot(int SAME_PLOT,
   float x1, y1, x2, y2; 
   int type_of_Filling;
   int color_Index;
+  float XD; 
   float * x_line = (float *)calloc(2, sizeof(float) );
   float * y_line = (float *)calloc(2, sizeof(float) );
   
   if( SAME_PLOT == 0 ) {
     cpgslw(3.0);
     float ch;
-    cpgqch( &ch );
-    cpgsch(2.0 * ch);  // cpgsch(1.2); cpgsch(2.5 * ch);  cpgsch(1.2 * ch);  
+    // cpgqch( &ch );
+    cpgsch(2.0);  // cpgsch(1.2); cpgsch(2.0 * ch);  cpgsch(1.2 * ch);  
                          
     cpgenv(Range_x[0], Range_x[1], Range_y[0], Range_y[1], 0, 1);
     
@@ -60,8 +61,9 @@ void cpg_box_plot(int SAME_PLOT,
   /*                      type_of_Filling = 4 => cross-hatched            */
   if( Initial_color_Index == 2) type_of_Filling = 1;
   else                          type_of_Filling = 2;
-  
-  float XD = (xs[n-1] - xs[0] ) / (float)(n-1); 
+
+  if( n > 1 ) XD = (xs[n-1] - xs[0] ) / (float)(n-1);
+  else        XD = 1; 
 
   for(i=0; i<n; i++) {
     x1 = xs[i] - 0.5* SHRINKING_FACTOR_BOX * XD; 

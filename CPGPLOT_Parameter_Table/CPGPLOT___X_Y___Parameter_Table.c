@@ -38,7 +38,8 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Paramet
   /*********************************************************************/
   for(i=0; i < P->SUB_OUTPUT_VARIABLES; i++){
     k = P->OUTPUT_VARIABLE_INDEX[i];
-    Y_label[i]  = P->Output_Variable_Name[k];
+    // Y_label[i]  = P->Output_Variable_Name[k];
+    Y_label[i]  = P->Output_Variable_Symbol[k]; 
   }
 
   double ** y_Stationarity = (double **)calloc( P->SUB_OUTPUT_VARIABLES, sizeof(double *) );
