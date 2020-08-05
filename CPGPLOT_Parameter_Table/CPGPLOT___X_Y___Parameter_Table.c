@@ -47,6 +47,8 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Paramet
     y_Stationarity[i] = (double *)calloc( NO, sizeof(double) );
   }
 
+  cpgslct(P->CPG->DEVICE_NUMBER);      /* Selecting Own Device */
+  
   for (i = 0; i < P->SUB_OUTPUT_VARIABLES; i++) {
 
     Title[0] = '\0';
@@ -71,11 +73,14 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Paramet
     printf("Title: %s\nX axes: %s\nY axes: %s\n\n", Title, X_label, Y_label[i]);
 #endif
 
-    P->CPG->type_of_Symbol = 1; P->CPG->color_Index = 4;  P->CPG->type_of_Line = 1; //P->CPG->type_of_Symbol = 9;
+    P->CPG->type_of_Symbol = 1; P->CPG->color_Index = 4;  P->CPG->type_of_Line = 1;
+    P->CPG->type_of_Width  = 15; //P->CPG->type_of_Symbol = 9;
+    
     CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_C_A_L_E ( P->CPG,
 						  NO, x_Time, y_Time[i],
 						  X_label, Y_label[i], Title,
 						  SCALE_X, SCALE_Y );
+    
 #if defined STATIONARY_POINT_REPRESENTATION
     /* B E G I N :   Plotting the stationary assymptotic behavior      */
     k =  P->OUTPUT_VARIABLE_INDEX[i];
@@ -495,7 +500,7 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___n___P_L_O_T_S(int No_of_DEVICE,
   float x_Time_Position, y_Time_Position, char_Size;
   int Horizontal_Plot_Position;
   int Vertical_Plot_Position;
-   Parameter_Model * P     = Table->P;
+  Parameter_Model * P     = Table->P;
   Parameter_CPGPLOT * CPG = P->CPG;    /* Please, make sure that
 					  Table->CPG_STO has been initialized and
 					  P->CPG points to this structure */
@@ -525,12 +530,14 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___n___P_L_O_T_S(int No_of_DEVICE,
   sprintf(Time_Eraser, "Time = %5.2f", Last_Time);
 
 #if defined VERBOSE
-  printf("Realization = %d\tTime = %5.2f\n", SAME_PLOT, Current_Time);
-  Press_Key();
+  // printf("Realization = %d\tTime = %5.2f\n", SAME_PLOT, Current_Time);
+  // Press_Key();
 #endif
 
   CPG->type_of_Width       = 4;
-  cpgslct(No_of_DEVICE);
+
+  cpgslct(No_of_DEVICE);      /* Selecting Device */
+  
   Plot_Title[0]  = '\0';
 
   for (k = 0; k<Table->SUB_OUTPUT_VARIABLES; k++) {
@@ -552,6 +559,7 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___n___P_L_O_T_S(int No_of_DEVICE,
 	Vertical_Plot_Position    = k%abs(CPG->CPG__PANEL__Y) + 1;
 	Horizontal_Plot_Position  = k/abs(CPG->CPG__PANEL__Y) + 1;;
       }
+      
       cpgpanl(Horizontal_Plot_Position, Vertical_Plot_Position);
       CPG->color_Index         = (2 + SAME_PLOT)%10;
 
@@ -568,7 +576,7 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___n___P_L_O_T_S(int No_of_DEVICE,
 							  "Time",
 							  Table->Output_Variable_Name[kk],
 							  Plot_Title,
-							  1, 1 );
+							  1, 1); 
     cpgqch(&char_Size);
     cpgsch(2.0);
     cpgsci(0);
