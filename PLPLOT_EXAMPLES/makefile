@@ -1,4 +1,4 @@
-EXTRA_LIBRARY_PATH=-L/usr/lib/###########
+EXTRA_LIBRARY_PATH=-L/usr/lib/##############
 # EXTRA_LIBRARY_PATH+=-L/usr/lib/i386-linux-gnu/######
 EXTRA_INCLUDE_PATH=-I/usr/include/plplot/########### 
 # EXTRA_INCLUDE_PATH+=-I/usr/include/X11/########### 
