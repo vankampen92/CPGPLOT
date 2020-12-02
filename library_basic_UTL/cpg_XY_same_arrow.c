@@ -12,13 +12,13 @@ void cpg_XY_same_arrow( int n, float *xs, float *ys,
   
   cpgsah(1, 40.0, 0.6);
   
-  i = 50;
-  assert(i < n); 
+  // i = 50;
+  assert(n == 2); 
 
-  x1 = xs[i-1]; 
-  y1 = ys[i-1];
-  x2 = xs[i]; 
-  y2 = ys[i];
+  x1 = xs[0]; 
+  y1 = ys[0];
+  x2 = xs[1]; 
+  y2 = ys[1];
   
   cpgarro(x1, y1,  x2, y2);
 

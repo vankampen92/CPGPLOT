@@ -15,14 +15,17 @@ void cpg_XY_plot(int n, float *xs, float *ys, float *Range_x, float *Range_y,
    * Call cpgenv to specify the range of the axes and to draw a box, and
    * cpglab to label it. The x-axis runs from 0 to 10, and y from 0 to 20.
    */
+
+  cpgslw(3.0);
+  cpgsch(2.0);  //cpgsch(1.6);  
   
-  cpgslw(2.0);
+  // ---> cpgslw(2.0);
   // float ch;
   // cpgqch( &ch );
   // cpgsch(2.0 * ch);  // cpgsch(1.2);  
   // cpgsch(1.5);  
-  float ch; cpgqch( &ch );
-  cpgsch(2.0 * ch);    // cpgsch(1.2);  
+  // ---> float ch; cpgqch( &ch );
+  // ---> cpgsch(2.0 * ch); // cpgsch(1.2);  
                        // cpgsch(1.6);  
   
   cpgenv(Range_x[0], Range_x[1], Range_y[0], Range_y[1], 0, 0);

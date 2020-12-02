@@ -61,11 +61,19 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___C_U_S_T_O_M_I_Z_E_D___T_I_T_L_E ( Paramet
     doubletochar( Value, Number );
     p_Title = strcat( Title, Number);
 #else
-    if( MODEL_PARAMETERS_MAXIMUM < 10 )
-      sprintf(Title, "%s = %5.2f   %s = %5.2f   %s = %5.2f",
-	      P->Symbol_Parameters[3],  P->Default_Vector_Parameters[3],
-	      P->Symbol_Parameters[7],  P->Default_Vector_Parameters[7],
-	      P->Symbol_Parameters[8],  P->Default_Vector_Parameters[8]);
+    /* if( MODEL_PARAMETERS_MAXIMUM < 10 ) */
+    /*   if (MODEL_PARAMETERS_MAXIMUM >=9 ){ */
+    /* 	sprintf(Title, "%s = %5.2f   %s = %5.2f   %s = %5.2f", */
+    /* 		P->Symbol_Parameters[3],  P->Default_Vector_Parameters[3], */
+    /* 		P->Symbol_Parameters[7],  P->Default_Vector_Parameters[7], */
+    /* 		P->Symbol_Parameters[8],  P->Default_Vector_Parameters[8]); */
+    /*   } */
+    /*   else { */
+    /* 	sprintf(Title, "%s = %5.2f   %s = %5.2f   %s = %5.2f", */
+    /* 		P->Symbol_Parameters[0],  P->Default_Vector_Parameters[0],  */
+    /* 		P->Symbol_Parameters[1],  P->Default_Vector_Parameters[1],  */
+    /* 		P->Symbol_Parameters[2],  P->Default_Vector_Parameters[2]); */
+    /*   } */
 #endif
 
 

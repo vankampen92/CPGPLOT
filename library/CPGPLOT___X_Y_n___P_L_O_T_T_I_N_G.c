@@ -82,7 +82,7 @@ int CPGPLOT___X_Y_n___P_L_O_T_T_I_N_G( Parameter_CPGPLOT * CPG,
     cpgscr(color_I, Red, Green, Blue); 
     color_Index[j] = color_I; //color_Index[j] = 5; //
     type_of_Line[j] = 1;
-    type_of_Width[j] = 1;
+    type_of_Width[j] = 10;
     type_of_Symbol[j] = 1;
   }
 
