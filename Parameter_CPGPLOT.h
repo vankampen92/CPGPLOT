@@ -25,6 +25,12 @@ Parameter_CPGPLOT * A_C_T_I_V_A_T_E___C_P_G_P_L_O_T (int No_of_OUTPUT_VARIABLES,
 						     int cpgask_argument, 
 						     char * cpgopen_argument );
 
+Parameter_CPGPLOT * A_C_T_I_V_A_T_E___2nd___C_P_G_P_L_O_T (int FULL_PLOT,
+							   int No_of_OUTPUT_VARIABLES, 
+							   int N, 
+							   int cpgask_argument, 
+							   char * cpgopen_argument );
+
 void paramCommand_Line(FILE *fp, Parameter_CPGPLOT * CPG);
 
 void modelReport(char *File, Parameter_CPGPLOT * CPG);

@@ -132,4 +132,64 @@ Parameter_CPGPLOT * A_C_T_I_V_A_T_E___C_P_G_P_L_O_T (int No_of_OUTPUT_VARIABLES,
   
   return( C );
 }
+
+Parameter_CPGPLOT * A_C_T_I_V_A_T_E___2nd___C_P_G_P_L_O_T (int FULL_PLOT,
+							   int No_of_OUTPUT_VARIABLES, 
+							   int N, 
+							   int cpgask_argument, 
+							   char * cpgopen_argument )
+{
+  /* Input arguments:
+     
+     . FULL_PLOT, Boolean variable 1: Yes; 0: No. If FULL_PLOT=0, then no device is 
+     finally activated, and DEVICE_NUMBER is, zero, by defaultl. 
+     . No_of_OUTPUT_VARIABLES
+     . N lenght of the Output variable vectors.
+     . cpask_argument, to ask before plotting on a next page. 
+     . cpgopen_argument, type of device to sent data to plot (for exampmle, '/CPS')
+
+     Output arugments:
+     . Pointer to a 'Parameter_CPGPLOT' structure. 
+
+  */
+  int DEVICE_NUMBER;
+  
+  printf(" Parameter_CPGPLOT structure will be allocated: \n");
+  printf(" %d output variables of length %d points will allocated\n", No_of_OUTPUT_VARIABLES, N);
+  Parameter_CPGPLOT * C = (Parameter_CPGPLOT *)malloc( 1 * sizeof(Parameter_CPGPLOT) );
+  P_A_R_A_M_E_T_E_R___C_P_G_P_L_O_T___A_L_L_O_C ( C, No_of_OUTPUT_VARIABLES, N );
+  P_A_R_A_M_E_T_E_R___C_P_G_P_L_O_T___U_P_L_O_A_D (C);
+
+  printf(" Maximum Number of Panels = %d\t Number of Subpanels = %d\n", 
+	 No_of_OUTPUT_VARIABLES, CPG__PANEL__X * CPG__PANEL__Y);
+  
+  if( No_of_OUTPUT_VARIABLES > CPG__PANEL__X * CPG__PANEL__Y ){
+    printf(" Warning!!!\n Not enough subpanels to draw this quantity of variables\n");
+    printf(" in separate subplots\n");
+    //Press_Key();
+    /*   printf(" The program will exit\n"); */
+    /*   exit(0); */
+  }
+  
+  if (FULL_PLOT == 1) { 
+    DEVICE_NUMBER = cpgopen( cpgopen_argument );
+
+    if (DEVICE_NUMBER <= 0 ) {
+      printf(" Graphic device cannot be opened\n");
+      exit(1);
+    }
+    printf(" Device Number: %d\n", DEVICE_NUMBER); 
+    getchar();
+    cpgsubp(CPG__PANEL__X, CPG__PANEL__Y); /* Subdivision of the window in panels.
+					    Automatic writing on consecutive panels
+					    in CPG__PANEL__X  x  CPG__PANEL__Y grid 
+					 */
+    cpgask( cpgask_argument );
+  }
+  
+  C->DEVICE_NUMBER = DEVICE_NUMBER;
+  
+  return( C );
+}
+
 #endif
