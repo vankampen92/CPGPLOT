@@ -40,19 +40,19 @@ First you should install the libraries to meet the dependencies mentioned above.
   + #### 5. Tests:
   In order to test if pgplot, plplot and CPGPLOT are correctly installed in your machine, you go to the directory ~/CPGPLOT_EXAMPLES. In that directory, there is a simple example of how to use the CPGPLOT library. You build it by typing:
 
-     + ~/CPGPLOT_EXAMPLES/make
+     + ~/CPGPLOT/CPGPLOT_EXAMPLES/make
 
      and you will get the exectutable file PLOT. You may run the example with some command arguments (see main.c). For instance, 
 
-     + ~/CPGPLOT_EXAMPLES/PLOT -G0 2 -G1 2 -G2 1 -G3 0 -G4 6.0 -G5 1 -G6 0.0 -G7 1.0
+     + ~/CPGPLOT/CPGPLOT_EXAMPLES/PLOT -G0 2 -G1 2 -G2 1 -G3 0 -G4 6.0 -G5 1 -G6 0.0 -G7 1.0
 
      You should get a graph with four different subplots. You may also type:
 
-     + ~/PROJECT_CPGPLOT_EXAMPLES/PLOT -h
+     + ~/CPGPLOT/CPGPLOT_EXAMPLES/PLOT -h
 
      and see other available command line arguments. You may also type:
 
-     + ~/PROJECT_CPGPLOT_EXAMPLES/PLOT -G29 ?
+     + ~/CPGPLOT/CPGPLOT_EXAMPLES/PLOT -G29 ?
 
      and see the different available graphic formats in which plots can be saved. The value for these input arguments can be overriden by the internal program code. You may have a good reason to do it, for instance, the necessity to produce several plots with different parameters as program executions proceeds. If you are in the mood, make moodfications at your own risk. Be creative.			       	   
 
