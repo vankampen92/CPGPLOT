@@ -312,66 +312,6 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___D_U_A_L ( Parameter_Table * P,
   free( Y_RANGE );
 }
 
-void C_P_G___S_U_B___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( int REPLICATE,
-							   Parameter_Table * P,
-							   int NO, double * x_Time, double ** y_Time )
-{
-  /* CPG Representation: Time evolution of the array stored at y_Time[] */
-  int no_OUTPUT_VARIABLES = P->SUB_OUTPUT_VARIABLES;
-  int i, k;
-  char * p_Title;
-  char * X_label  = (char *)malloc( sizeof(char) * 500 );
-  char ** Y_label = (char **)malloc( sizeof(char *) * P->SUB_OUTPUT_VARIABLES );
-  char * Title    = (char *)malloc( sizeof(char) * 500 );
-  double X_RANGE[2];
-  double ** Y_RANGE = (double **)calloc( P->SUB_OUTPUT_VARIABLES, sizeof(double *));
-  for(i = 0; i<P->SUB_OUTPUT_VARIABLES; i++){
-    Y_RANGE[i] = (double *)calloc(2, sizeof(double));
-  }
-
-  /* BEGIN: Scale defintions  */
-  /* SCALE_* = 0 (fixed scale)  / SCALE_* = 1 (dynamic scale) */
-  int SCALE_Y = P->CPG->CPG_SCALE_Y;
-  int SCALE_X = P->CPG->CPG_SCALE_X;
-  C_P_G___S_C_A_L_E___F_I_X ( P, X_RANGE, Y_RANGE );
-                       //  SCALE__ = 1 (fixed scale)  / SCALE__ = 0 (dynamic scale)
-                       //  Note: If Ranges are dynamic no default ranges
-                       //        need to be defined here
-                       //  Otherwise, this part need to be adapted for
-                       //  every purpose.
-  /*   END: Scale definitions */
-
-  label_Name(X_label, "Time");
-  /*********************************************************************/
-  for(i=0; i < P->SUB_OUTPUT_VARIABLES; i++){
-    k = P->OUTPUT_VARIABLE_INDEX[i];
-    Y_label[i]  = P->Output_Variable_Name[k];
-  }
-  for (i = 0; i < P->SUB_OUTPUT_VARIABLES; i++) {
-
-    Title[0] = '\0';
-    p_Title = strcat( Title, Y_label[i] );
-    p_Title = strcat( Title, ".    T i m e   E v o l u t i o n" );
-
-    printf("Title: %s\nX axes: %s\nY axes: %s\n\n", Title, X_label, Y_label[i]);
-
-    //Y_RANGE[i][0] =0.0; Y_RANGE[i][1] =1.0;
-
-    CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( P->CPG,
-                                                          REPLICATE,
-                                                          NO, x_Time, y_Time[i],
-							  X_label, Y_label[i], Title,
-							  SCALE_X, SCALE_Y );
-  }
-  /*********************************************************************/
-  free (Title); free (Y_label);
-
-  for(i = 0; i<P->SUB_OUTPUT_VARIABLES; i++){
-    free (Y_RANGE[i]);
-  }
-  free( Y_RANGE );
-}
-
 void C_P_G___S_C_A_L_E___F_I_X ( Parameter_Table * P,
 				 double * X_RANGE,  double ** Y_RANGE)
 {
@@ -596,4 +536,88 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___n___P_L_O_T_S(int No_of_DEVICE,
 
   free(Plot_Title); free(Plot_Time); free(Time_Eraser);
 }
+
+void C_P_G___S_U_B___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( int SAME_PLOT,
+							   Parameter_Table * Table,
+							   int NO, double * x_Time,
+							   double ** y_Time )
+{
+  /* CPG Representation: Time evolution of the array stored at y_Time[] */
+  int Horizontal_Plot_Position;
+  int Vertical_Plot_Position;
+  int no_OUTPUT_VARIABLES = Table->SUB_OUTPUT_VARIABLES;
+  int i, k;
+  char * p_Title;
+  char * X_label  = (char *)malloc( sizeof(char) * 500 );
+  char ** Y_label = (char **)malloc( sizeof(char *) * Table->SUB_OUTPUT_VARIABLES );
+  char * Title    = (char *)malloc( sizeof(char) * 500 );
+  double X_RANGE[2];
+  double ** Y_RANGE = (double **)calloc( Table->SUB_OUTPUT_VARIABLES, sizeof(double *));
+  for(i = 0; i<Table->SUB_OUTPUT_VARIABLES; i++){
+    Y_RANGE[i] = (double *)calloc(2, sizeof(double));
+  }
+
+  /* BEGIN: Scale defintions  */
+  /* SCALE_* = 0 (fixed scale)  / SCALE_* = 1 (dynamic scale) */
+  int SCALE_Y = Table->CPG->CPG_SCALE_Y;
+  int SCALE_X = Table->CPG->CPG_SCALE_X;
+  C_P_G___S_C_A_L_E___F_I_X ( Table, X_RANGE, Y_RANGE );
+                       //  SCALE__ = 1 (fixed scale)  / SCALE__ = 0 (dynamic scale)
+                       //  Note: If Ranges are dynamic no default ranges
+                       //        need to be defined here
+                       //  Otherwise, this part need to be adapted for
+                       //  every purpose.
+  /*   END: Scale definitions */
+
+  label_Name(X_label, "Time");
+  /*********************************************************************/
+  for(i=0; i < Table->SUB_OUTPUT_VARIABLES; i++){
+    k = Table->OUTPUT_VARIABLE_INDEX[i];
+    Y_label[i]  = Table->Output_Variable_Name[k];
+  }
+
+  cpgslct(Table->CPG->DEVICE_NUMBER);      /* Selecting Device */
+  for (i = 0; i < Table->SUB_OUTPUT_VARIABLES; i++) {
+
+    Title[0] = '\0';
+    // p_Title = strcat( Title, Y_label[i] );
+    // p_Title = strcat( Title, ".    T i m e   E v o l u t i o n" );
+
+    printf("Title: %s\nX axes: %s\nY axes: %s\n\n", Title, X_label, Y_label[i]);
+
+    if (SAME_PLOT > 0) {
+      if (Table->CPG->CPG__PANEL__X > 0 && Table->CPG->CPG__PANEL__Y > 0 ){
+	Horizontal_Plot_Position  = i%Table->CPG->CPG__PANEL__X + 1;
+	Vertical_Plot_Position    = i/Table->CPG->CPG__PANEL__X + 1;
+      }
+      else {
+	Vertical_Plot_Position    = i%abs(Table->CPG->CPG__PANEL__Y) + 1;
+	Horizontal_Plot_Position  = i/abs(Table->CPG->CPG__PANEL__Y) + 1;;
+      }
+      
+      cpgpanl(Horizontal_Plot_Position, Vertical_Plot_Position);
+      
+      /* printf("i = %d\t Horizontal Position = %d\t Vertical Position = %d\n", */
+      /* 	     i, Horizontal_Plot_Position, Vertical_Plot_Position);      */
+
+      /* Press_Key();                                                           */
+    }
+    
+    //Y_RANGE[i][0] =0.0; Y_RANGE[i][1] =1.0;
+
+    CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Table->CPG,
+                                                          SAME_PLOT,
+                                                          NO, x_Time, y_Time[i],
+							  X_label, Y_label[i], Title,
+							  SCALE_X, SCALE_Y );
+  }
+  /*********************************************************************/
+  free (Title); free (Y_label);
+
+  for(i = 0; i<Table->SUB_OUTPUT_VARIABLES; i++){
+    free (Y_RANGE[i]);
+  }
+  free( Y_RANGE );
+}
+
 #endif
