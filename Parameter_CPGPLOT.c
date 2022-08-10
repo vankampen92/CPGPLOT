@@ -181,9 +181,9 @@ Parameter_CPGPLOT * A_C_T_I_V_A_T_E___2nd___C_P_G_P_L_O_T (int FULL_PLOT,
     printf(" Device Number: %d\n", DEVICE_NUMBER); 
     getchar();
     cpgsubp(CPG__PANEL__X, CPG__PANEL__Y); /* Subdivision of the window in panels.
-					    Automatic writing on consecutive panels
-					    in CPG__PANEL__X  x  CPG__PANEL__Y grid 
-					 */
+					      Automatic writing on consecutive panels
+					      in CPG__PANEL__X  x  CPG__PANEL__Y grid 
+					   */
     cpgask( cpgask_argument );
   }
   

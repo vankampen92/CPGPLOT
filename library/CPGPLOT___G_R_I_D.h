@@ -20,6 +20,13 @@ void C_P_G___P_L_O_T_T_I_N_G___2d___G_R_I_D___R_E_C_T_A_N_G_L_E_S( Parameter_CPG
 								   double * COLOR_STATES,
 								   double i_PLOT );
 
+void C_P_G___P_L_O_T_T_I_N_G___2d___G_R_I_D___R_E_C_T_A_N_G_L_E_S___F_R_A_M_E( Parameter_CPGPLOT * CPG,
+                                                                   double * W,
+                                                                   int FIRST_PLOT,
+                                                                   int no_of_COLORS,
+                                                                   double * COLOR_STATES,
+                                                                   double i_PLOT );
+
 int C_P_G___P_L_O_T_T_I_N_G___2d___C_O_L_O_R___R_E_C_T_A_N_G_L_E_S___D_R_I_V_E_R ( int FIRST_PLOT, float * g,  
 										   int no_of_COLORS, float * colors, 
 										   double * ORIGIN, 
@@ -30,6 +37,15 @@ int C_P_G___P_L_O_T_T_I_N_G___2d___C_O_L_O_R___R_E_C_T_A_N_G_L_E_S___D_R_I_V_E_R
 										   char * W_label,
 										   char * Title );
 
+int C_P_G___P_L_O_T_T_I_N_G___2d___C_O_L_O_R___R_E_C_T_A_N_G_L_E_S___D_R_I_V_E_R___F_R_A_M_E ( int FIRST_PLOT, float * g,
+                                                                                   int no_of_COLORS, float * colors,
+                                                                                   double * ORIGIN,
+                                                                                   int L__X, int L__Y,
+                                                                                   double X_d, double Y_d,
+                                                                                   char * X_label,
+                                                                                   char * Y_label,
+                                                                                   char * W_label,
+                                                                                   char * Title ); 
 int which_COLOR (float g, float * colors, int n );
 
 void C_P_G___P_L_O_T_T_I_N_G___2d___G_R_I_D___S_H_A_D_E_S( Parameter_CPGPLOT * CPG,

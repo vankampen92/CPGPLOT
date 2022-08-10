@@ -184,7 +184,7 @@ int C_P_G___P_L_O_T_T_I_N_G___2d___C_O_L_O_R___S_U_R_F_A_C_E___D_R_I_V_E_R ( int
   
   tr[3] = (float)ORIGIN[1];
   tr[4] = 0.0;
-  tr[5] = y_FACTOR * (float)Y_d/(float)L__Y; // GRID STEP on X AXIS;
+  tr[5] = y_FACTOR * (float)Y_d/(float)L__Y; // GRID STEP on Y AXIS;
 
   /*        X = TR(0) + TR(1)*I + TR(2)*J = TR(2)*J */
   /*        Y = TR(3) + TR(4)*I + TR(5)*J = TR(4)*I */
@@ -283,7 +283,7 @@ int C_P_G___P_L_O_T_T_I_N_G___2d___C_O_L_O_R___S_U_R_F_A_C_E___D_R_I_V_E_R ( int
       // pFile = strcat(W_Current, Number_min);
       cpgsch(2.0);                                          /* Character size control */
       /* Comment out the following line to have a wedge title */	
-      cpgwedg(Side, 2.5, 4.0, g_min, g_MAX, W_Current);
+      cpgwedg(Side, 0.5, 2.0, g_min, g_MAX, W_Current);
 
       Side[0] = Side_Old[0]; Side[1] = '\0';
       free(Side_Old);

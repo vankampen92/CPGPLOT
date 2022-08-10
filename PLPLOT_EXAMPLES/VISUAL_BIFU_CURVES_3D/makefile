@@ -1,4 +1,5 @@
 EXTRA_LIBRARY_PATH=-L/usr/lib/###########
+# EXTRA_LIBRARY_PATH+=-L/usr/lib/plplot/
 # EXTRA_LIBRARY_PATH+=-L/usr/lib/i386-linux-gnu/######
 EXTRA_INCLUDE_PATH=-I/usr/include/plplot/########### 
 # EXTRA_INCLUDE_PATH+=-I/usr/include/X11/########### 
@@ -10,7 +11,7 @@ CXXFLAGS+=${EXTRA_INCLUDE_PATH} -g #-Wall
 # This makefile uses full power of conditional compilation. There is a bunch of variables that control this and
 # are passed as flags -D[NAME_of_the_VARIABLE] to the compiler during compilation 
 ##############################################################################################################
-PLPLOT_LIB=-L/usr/lib -lplplotd -L/usr/lib -lX11 -L/usr/lib -lpng
+PLPLOT_LIB=-L/usr/lib -lplplot -L/usr/lib -lX11 -L/usr/lib -lpng
 ##############################################################################################################
 TYPE_of_MAIN=################# 
 EXAMPLE=###########################

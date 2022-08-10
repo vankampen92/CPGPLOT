@@ -40,16 +40,28 @@ void cpg_box_plot(int SAME_PLOT,
     cpgslw(3.0);
     float ch;
     // cpgqch( &ch );
-    cpgsch(2.0);  // cpgsch(1.2); cpgsch(2.0 * ch);  cpgsch(1.2 * ch);  
+    cpgsch(3.0);  // cpgsch(1.2); cpgsch(2.0 * ch);  cpgsch(1.2 * ch);  
                          
-    cpgenv(Range_x[0], Range_x[1], Range_y[0], Range_y[1], 0, 1);
-    
+    // cpgenv(Range_x[0], Range_x[1], Range_y[0], Range_y[1], 0, 1);
+    /* Notice that cpgenv(...) is equivalent to this: */ 
+    cpgpage();
+    cpgvstd();
+    cpgswin(Range_x[0], Range_x[1], Range_y[0], Range_y[1]);
+
+    cpgsch(1.0);  
+    cpgbox ("BCST", 0.0, 0, "BCNSTV", 0.0, 0); 
+
+    // cpglab(X_label, Y_label, Title);
+    /* Notice that cpglab(...) is equivanent to this: */
     cpgbbuf();
-    cpgmtxt("T", 2.0, 0.5, 0.5, Title);    
-    cpgmtxt("B", 3.2, 0.5, 0.5, X_label);	
+    // cpgmtxt("T", 2.0, 0.5, 0.5, Title);   // No Title if commented out
+    // cpgmtxt("B", 3.2, 0.5, 0.5, X_label); // No axis title if commented out	
+    // cpgmtxt("B", 3.2, 0.5, 0.5, X_label); // Please, activate this line of code
+                                             // for normal box plots.  	
+    cpgsch(2.0);
     cpgmtxt("L", 2.2, 0.5, 0.5, Y_label);
     cpgebuf();
-  // This is equivalent to a full call to cpglab(X_label, Y_label, Title);
+ 
   }
 
   cpgsch(1.0); // cpgsch(0.83);    

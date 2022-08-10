@@ -558,15 +558,10 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( int SAME_PLOT,
   }
 
   /* BEGIN: Scale defintions  */
-  /* SCALE_* = 0 (fixed scale)  / SCALE_* = 1 (dynamic scale) */
   int SCALE_Y = Table->CPG->CPG_SCALE_Y;
   int SCALE_X = Table->CPG->CPG_SCALE_X;
-  C_P_G___S_C_A_L_E___F_I_X ( Table, X_RANGE, Y_RANGE );
-                       //  SCALE__ = 1 (fixed scale)  / SCALE__ = 0 (dynamic scale)
-                       //  Note: If Ranges are dynamic no default ranges
-                       //        need to be defined here
-                       //  Otherwise, this part need to be adapted for
-                       //  every purpose.
+  //  SCALE__ = 1 (fixed scale)  / SCALE__ = 0 (dynamic scale)
+  C_P_G___S_C_A_L_E___F_I_X ( Table, X_RANGE, Y_RANGE );                      
   /*   END: Scale definitions */
 
   label_Name(X_label, "Time");
@@ -577,6 +572,7 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( int SAME_PLOT,
   }
 
   cpgslct(Table->CPG->DEVICE_NUMBER);      /* Selecting Device */
+  
   for (i = 0; i < Table->SUB_OUTPUT_VARIABLES; i++) {
 
     Title[0] = '\0';
@@ -603,8 +599,6 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( int SAME_PLOT,
       /* Press_Key();                                                           */
     }
     
-    //Y_RANGE[i][0] =0.0; Y_RANGE[i][1] =1.0;
-
     CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Table->CPG,
                                                           SAME_PLOT,
                                                           NO, x_Time, y_Time[i],
@@ -619,5 +613,4 @@ void C_P_G___S_U_B___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( int SAME_PLOT,
   }
   free( Y_RANGE );
 }
-
 #endif
