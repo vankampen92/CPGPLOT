@@ -14,7 +14,9 @@ void CPGPLOT___B_A_R___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T ( Parameter_CPGPLOT *
 							     int SCALE_X, int SCALE_Y )
 {
   /* This function produces a simple bar plots in a (x, y) two-dimensional plot 
-     The input arrat Y[][] should be structured as follows: 
+     X[i] Index of the i-th bar
+     Y[i] Height of the i-th bar
+     from i = 0 to NO_of_POINTS - 1 
   */
   
   /* The ranges, plot features (color, line, width, type) are

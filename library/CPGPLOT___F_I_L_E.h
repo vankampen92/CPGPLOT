@@ -75,6 +75,11 @@ void F_I_L_E___X_Y_n___R_E_A_D ( Parameter_FILE * Table,
 				 double * x_Data, 
 				 double ** y_Data );
 
+void X_Y_n___R_E_A_D___R_O_W_S ( char * Name,
+								 int * No_of_POINTS_1, int No_of_POINTS_2,
+								 double * x_Data, 
+								  double ** y_Data );
+
 void X_Y_n___R_E_A_D ( char * Name,
 		       int No_of_POINTS_1, int No_of_POINTS_2,
 		       double * x_Data, 

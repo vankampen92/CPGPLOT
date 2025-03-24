@@ -1,4 +1,3 @@
-// $Id: x21c.c 11680 2011-03-27 17:57:51Z airwin $
 //      Grid data demo
 //
 // Copyright (C) 2004  Joao Cardoso
@@ -121,13 +120,13 @@ static PLOptionTable options[] = {
     }                           // long syntax
 };
 
-void create_data( PLFLT **xi, PLFLT **yi, PLFLT **zi, int pts );
+void create_data( PLFLT **xi, PLFLT **yi, PLFLT **zi, int npts );
 void free_data( PLFLT *x, PLFLT *y, PLFLT *z );
 void create_grid( PLFLT **xi, int px, PLFLT **yi, int py );
 void free_grid( PLFLT *x, PLFLT *y );
 
 static void
-cmap1_init()
+cmap1_init( void )
 {
     PLFLT i[2], h[2], l[2], s[2];
 
@@ -150,21 +149,21 @@ cmap1_init()
 PLFLT xm, xM, ym, yM;
 
 int
-main( int argc, const char *argv[] )
+main( int argc, char *argv[] )
 {
-    PLFLT *x, *y, *z, *clev;
-    PLFLT *xg, *yg, **zg;
-    PLFLT zmin, zmax, lzm, lzM;
-    int   i, j, k;
-    PLINT alg;
-    char  *title[] = { "Cubic Spline Approximation",
-                       "Delaunay Linear Interpolation",
-                       "Natural Neighbors Interpolation",
-                       "KNN Inv. Distance Weighted",
-                       "3NN Linear Interpolation",
-                       "4NN Around Inv. Dist. Weighted" };
+    PLFLT         *x, *y, *z, *clev;
+    PLFLT         *xg, *yg, **zg;
+    PLFLT         zmin, zmax, lzm, lzM;
+    int           i, j, k;
+    PLINT         alg;
+    PLCHAR_VECTOR title[] = { "Cubic Spline Approximation",
+                              "Delaunay Linear Interpolation",
+                              "Natural Neighbors Interpolation",
+                              "KNN Inv. Distance Weighted",
+                              "3NN Linear Interpolation",
+                              "4NN Around Inv. Dist. Weighted" };
 
-    PLFLT opt[] = { 0., 0., 0., 0., 0., 0. };
+    PLFLT         opt[] = { 0., 0., 0., 0., 0., 0. };
 
     xm = ym = -0.2;
     xM = yM = 0.6;
@@ -180,6 +179,8 @@ main( int argc, const char *argv[] )
 
     plinit();
 
+    // Use a colour map with no black band in the middle.
+    cmap1_init();
     // Initialise random number generator
     plseed( 5489 );
 
@@ -196,15 +197,28 @@ main( int argc, const char *argv[] )
 
     create_grid( &xg, xp, &yg, yp ); // grid the data at
     plAlloc2dGrid( &zg, xp, yp );    // the output grided data
-    clev = (PLFLT *) malloc( nl * sizeof ( PLFLT ) );
+    clev = (PLFLT *) malloc( (size_t) nl * sizeof ( PLFLT ) );
 
-    // printf("Npts=%d gridx=%d gridy=%d", pts, xp, yp);
     plcol0( 1 );
     plenv( xm, xM, ym, yM, 2, 0 );
     plcol0( 15 );
     pllab( "X", "Y", "The original data sampling" );
-    plcol0( 2 );
-    plpoin( pts, x, y, 5 );
+    for ( i = 0; i < pts; i++ )
+    {
+        plcol1( ( z[i] - zmin ) / ( zmax - zmin ) );
+        // The following plstring call should be the the equivalent of
+        // plpoin( 1, &x[i], &y[i], 5 ); Use plstring because it is
+        // not deprecated like plpoin and has much more powerful
+        // capabilities.  N.B. symbol 141 works for Hershey devices
+        // (e.g., -dev xwin) only if plfontld( 0 ) has been called
+        // while symbol 727 works only if plfontld( 1 ) has been
+        // called.  The latter is the default which is why we use 727
+        // here to represent a centred X (multiplication) symbol.
+        // This dependence on plfontld is one of the limitations of
+        // the Hershey escapes for PLplot, but the upside is you get
+        // reasonable results for both Hershey and Unicode devices.
+        plstring( 1, &x[i], &y[i], "#(727)" );
+    }
     pladv( 0 );
 
     plssub( 3, 2 );
@@ -261,7 +275,7 @@ main( int argc, const char *argv[] )
                 }
             }
 
-            plMinMax2dGrid( (const PLFLT **) zg, xp, yp, &lzM, &lzm );
+            plMinMax2dGrid( (PLFLT_MATRIX) zg, xp, yp, &lzM, &lzm );
 
             lzm = MIN( lzm, zmin );
             lzM = MAX( lzM, zmax );
@@ -283,8 +297,8 @@ main( int argc, const char *argv[] )
                 plenv0( xm, xM, ym, yM, 2, 0 );
                 plcol0( 15 );
                 pllab( "X", "Y", title[alg - 1] );
-                plshades( (const PLFLT **) zg, xp, yp, NULL, xm, xM, ym, yM,
-                    clev, nl, 1, 0, 1, plfill, 1, NULL, NULL );
+                plshades( (PLFLT_MATRIX) zg, xp, yp, NULL, xm, xM, ym, yM,
+                    clev, nl, 1., 0, 1., plfill, 1, NULL, NULL );
                 plcol0( 2 );
             }
             else
@@ -292,7 +306,6 @@ main( int argc, const char *argv[] )
                 for ( i = 0; i < nl; i++ )
                     clev[i] = lzm + ( lzM - lzm ) / ( nl - 1 ) * i;
 
-                cmap1_init();
                 plvpor( 0.0, 1.0, 0.0, 0.9 );
                 plwind( -1.1, 0.75, -0.65, 1.20 );
                 //
@@ -309,7 +322,7 @@ main( int argc, const char *argv[] )
                     "bcdfntu", "Z", 0.5, 0 );
                 plcol0( 15 );
                 pllab( "", "", title[alg - 1] );
-                plot3dc( xg, yg, (const PLFLT **) zg, xp, yp, DRAW_LINEXY | MAG_COLOR | BASE_CONT, clev, nl );
+                plot3dc( xg, yg, (PLFLT_MATRIX) zg, xp, yp, DRAW_LINEXY | MAG_COLOR | BASE_CONT, clev, nl );
             }
         }
     }
@@ -330,8 +343,8 @@ create_grid( PLFLT **xi, int px, PLFLT **yi, int py )
     PLFLT *x, *y;
     int   i;
 
-    x = *xi = (PLFLT *) malloc( px * sizeof ( PLFLT ) );
-    y = *yi = (PLFLT *) malloc( py * sizeof ( PLFLT ) );
+    x = *xi = (PLFLT *) malloc( (size_t) px * sizeof ( PLFLT ) );
+    y = *yi = (PLFLT *) malloc( (size_t) py * sizeof ( PLFLT ) );
 
     for ( i = 0; i < px; i++ )
         *x++ = xm + ( xM - xm ) * i / ( px - 1. );
@@ -348,17 +361,17 @@ free_grid( PLFLT *xi, PLFLT *yi )
 }
 
 void
-create_data( PLFLT **xi, PLFLT **yi, PLFLT **zi, int pts )
+create_data( PLFLT **xi, PLFLT **yi, PLFLT **zi, int npts )
 {
     int   i;
     PLFLT *x, *y, *z, r;
     PLFLT xt, yt;
 
-    *xi = x = (PLFLT *) malloc( pts * sizeof ( PLFLT ) );
-    *yi = y = (PLFLT *) malloc( pts * sizeof ( PLFLT ) );
-    *zi = z = (PLFLT *) malloc( pts * sizeof ( PLFLT ) );
+    *xi = x = (PLFLT *) malloc( (size_t) npts * sizeof ( PLFLT ) );
+    *yi = y = (PLFLT *) malloc( (size_t) npts * sizeof ( PLFLT ) );
+    *zi = z = (PLFLT *) malloc( (size_t) npts * sizeof ( PLFLT ) );
 
-    for ( i = 0; i < pts; i++ )
+    for ( i = 0; i < npts; i++ )
     {
         xt = ( xM - xm ) * plrandd();
         yt = ( yM - ym ) * plrandd();
@@ -392,3 +405,4 @@ free_data( PLFLT *x, PLFLT *y, PLFLT *z )
     free( (void *) y );
     free( (void *) z );
 }
+

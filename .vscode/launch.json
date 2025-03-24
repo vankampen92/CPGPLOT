@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Program",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/CPGPLOT_EXAMPLES/EXAMPLE_05/program",
+            "args": [
+                "-F0", "electricity.dat",
+                "-X0", "10000",
+                "-Y0", "4",
+                "-F1", "cost.dat",
+                "-X1", "10000",
+                "-Y1", "4",
+                "-AB", "15173.6",
+                "-A1", "7524.9",
+                "-A2", "8157.9",
+                "-C0", "173.47",
+                "-P0", "135",
+                "-V0", "132",
+                "-L0", "400",
+                "-G0", "2",
+                "-G1", "1"
+            ],
+            "cwd": "${workspaceFolder}/CPGPLOT_EXAMPLES/EXAMPLE_05",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}

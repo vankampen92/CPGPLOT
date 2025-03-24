@@ -51,7 +51,7 @@ case 'F': /* Name of the file to be read */
 	      skip++;
 	      break;
 
-              case 'X': /* X dimension (or rows) of the file to be read */
+case 'X': /* X dimension (or rows) of the file to be read */
               if(argv[argcount][2]=='0') {
                 sscanf(argv[argcount+1],"%d", &n_Dummy); F_x_GRID[0] = n_Dummy; }
 	      else if(argv[argcount][2]=='1') {
@@ -98,7 +98,7 @@ case 'F': /* Name of the file to be read */
 	      skip++;
 	      break;
 
-              case 'Y': /* Y dimension (or columns) of the file to be read */
+case 'Y': /* Y dimension (or columns) of the file to be read */
               if(argv[argcount][2]=='0') {
                 sscanf(argv[argcount+1],"%d", &n_Dummy); F_y_GRID[0] = n_Dummy; }
 	      else if(argv[argcount][2]=='1') {

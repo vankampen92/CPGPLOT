@@ -69,8 +69,6 @@ void  P_A_R_A_M_E_T_E_R___C_P_G_P_L_O_T___U_P_L_O_A_D (Parameter_CPGPLOT * C)
   C->Type_of_COLOR_SHADING = Type_of_COLOR_SHADING;
   C->Type_of_BRIGHT        = Type_of_BRIGHT;
   C->Type_of_CONTRA        = Type_of_CONTRA;
-
-	
 }
 
 void P_A_R_A_M_E_T_E_R___C_P_G_P_L_O_T___F_R_E_E( Parameter_CPGPLOT * C, int NO)

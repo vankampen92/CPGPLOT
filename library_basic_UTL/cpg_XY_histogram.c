@@ -7,7 +7,7 @@ void cpg_XY_histogram (int n, float * data, int n_BINS,
 {
   /* Draw a histogram of N values of a variable in array              */
   /* data(1...N) in the range DATMIN to DATMAX using NBIN bins. The   */
-  /* range ind defined in input argument Range_x[]. Note that array   */
+  /* range is defined in input argument Range_x[]. Note that array   */
   /* elements which fall exactly on the boundary between two bins     */
   /* will be counted in the higher bin rather than the lower one      */
   /* Array elements whose value is less than DATMIN (Range_x[0])      */
@@ -33,4 +33,35 @@ void cpg_XY_histogram (int n, float * data, int n_BINS,
   cpgsci(1);           cpgslw(1);             cpgsls(1); 
 }
 
+void cpg_histogram_x_axes(double X[], int noBar, double x_i, double x_s)
+{
+    int i;
+    double step;
+
+    step = (x_s - x_i)/(double)noBar;
+    for (i=0; i<noBar; i++)
+      X[i] = x_i + (step*i + step*(i+1))/2.0;
+
+    X[noBar] = x_i + step*noBar + step/2.0;
+}
+
+void cpg_histogram_Pn_val(double Time[], int no, double Pn[], int B, double x_i, double x_s)
+{
+  int i,j, logic;
+  double step;
+
+  step = (x_s - x_i)/(double)B;
+  for(i=0; i<no; i++){
+    logic = 0;
+    j = 0;
+    while(logic == 0 && j < B){
+      if(Time[i] > (x_i + step*j) && Time[i] <= (x_i + step*(j+1)) ){
+	      logic = 1;
+	      Pn[j]++;
+      }
+      j++;
+    }
+    if(j == B && logic == 0) Pn[B]++;
+  }
+}
 

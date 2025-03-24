@@ -1,6 +1,13 @@
-/* This main function plots two scatter plots and their 
-   corresponding smoothing lines on a single plot.
-  
+/* This main function plots a family of functions, as 
+ * defined in the code. It is an example of the use of
+ * the library function: 
+ *
+ * CPGPLOT___X_Y___P_L_O_T_T_I_N_G___S_A_M_E___P_L_O_T(...).
+ *
+ * and how to use the input arguments that control it, 
+ * including axes ranks, subplots, etc. 
+ */
+ /* 
    Data are given as 4 input files.    
 
    Compilation:
@@ -14,8 +21,10 @@
    
    ~$ ./PLOT -G0 2 -G1 2 -G2 1 -G3 0 -G4 6.0 -G5 1 -G6 0.0 -G7 1.0
 
-   It is very important to establish the axis ranks through the corresponding command line arguments as in the example. Your ranks will be active as long as you also introduce -G2 1 (x axis) and G5 1 (y axis) --- as oposed to -G2 0 and -G5 0, which will shut down your axis rank choice. In the latter case, the program calculates rank axis automatically. 
-*/
+   It is very important to establish the axis ranks through the corresponding command line arguments as in the example. 
+   Your ranks will be active as long as you also introduce -G2 1 (x axis) and G5 1 (y axis) --- as oposed to -G2 0 and -G5 0, 
+   which will shut down your axis rank choice. In the latter case, the program calculates rank axis automatically. 
+ */
 #include "main.h"
 
 #include "global.h"

@@ -23,8 +23,8 @@ void F_I_L_E___X_Y___R_E_A_D ( Parameter_FILE * Table,
       exit(1);
     }
     for( j = 0; j < No_of_POINTS_1; j++ ){
-	fscanf(fp, "%lf\t%lf\n", &x, &y);
-	x_Data[j] = x; y_Data[j] = y; 
+	    fscanf(fp, "%lf\t%lf\n", &x, &y);
+	    x_Data[j] = x; y_Data[j] = y; 
     }
     fclose(fp);
   /*   END : -----------------------------------------------------------*/
@@ -50,8 +50,8 @@ void X_Y___R_E_A_D ( char * Name,
     
     n=0;                                         
     while (fscanf(fp, "%lf\t%lf\n", &x, &y) != EOF ){  
-	x_Data[n] = x; y_Data[n] = y; 
-        n++;
+	    x_Data[n] = x; y_Data[n] = y; 
+      n++;
     }
     fclose(fp);
 

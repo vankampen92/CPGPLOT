@@ -1,3 +1,7 @@
+void cpg_XY_plot_axes(float *Range_x, float *Range_y, 
+		                  int color_Index, int type_of_Line, int type_of_Width, int type_of_Symbol, 
+		                  char *X_label, char *Y_label, char *Title);
+
 void cpg_frame_plot(float X_0, float X_1, float Y_0, float Y_1, 
 		    int type_of_Width, float character_Size,
 		    char * X_control, char * Y_control); 
@@ -20,6 +24,10 @@ void cpg_XY_histogram (int n, float * data, int n_BINS,
 		       float * Range_x, float * Range_y, 
 		       int color_Index, int type_of_Line, int type_of_Width,
 		       char * X_Label, char * Y_Label, char * Title );
+
+void cpg_histogram_x_axes(double X[], int noBar, double x_i, double x_s);
+
+void cpg_histogram_Pn_val(double Time[], int no, double Pn[], int B, double x_i, double x_s);
 
 void cpg_XYn_plot(int n, int n_XY, float *xs, float **ys, float *Range_x, float *Range_y, 
 		  int * color_Index, int * type_of_Line, int * type_of_Width, int * type_of_Symbol, 

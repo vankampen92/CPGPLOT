@@ -69,22 +69,30 @@ void cpg_bar_plot(int SAME_PLOT,
     x2 = xs[i] + 0.5* SHRINKING_FACTOR_BOX * XD; 
     y2 = ys[i];
 
+   /* 
     type_of_Width = 1; cpgslw(type_of_Width);
     color_Index = 1;   cpgsci(color_Index);
-    type_of_Line = 3;  cpgsls(type_of_Line); 
+    type_of_Line = 3;  cpgsls(type_of_Line);
+   */
+
+    cpgslw(type_of_Width);
+    cpgsci(color_Index);
+    cpgsls(type_of_Line); 
     cpg_XY_same_rectangle(x1, y1,  x2, y2,  
 			  color_Index, type_of_Filling );
+
     /* Plotting intermediate lines: 
        Please, comment it out if necessary */
-    No_of_SUBLINES = (int)y2;
-    type_of_Width = 1; cpgslw(type_of_Width);
-    type_of_Line  = 3; cpgsls(type_of_Line); 
-    /* For instance, type_of_Line = 2: Dashed line */
-    for( j = 0; j < (No_of_SUBLINES-1); j++) {
-      x[0] = x1; x[1] = x2;
-      y[0] = y[1]     = 1.0 + (float)j;
-      cpgline(2, x, y);
-    }    
+    /* No_of_SUBLINES = (int)y2;
+       type_of_Width = 1; cpgslw(type_of_Width);
+       type_of_Line  = 3; cpgsls(type_of_Line); 
+      
+       for( j = 0; j < (No_of_SUBLINES-1); j++) {
+         x[0] = x1; x[1] = x2;
+         y[0] = y[1]     = 1.0 + (float)j;
+         cpgline(2, x, y);
+       }
+   */    
   }
   free(x); free(y);
   

@@ -5,16 +5,17 @@
 
 #if defined CPGPLOT_REPRESENTATION
 void C_P_G___P_L_O_T_T_I_N_G___2d___G_R_I_D___S_H_A_D_E_S( Parameter_CPGPLOT * CPG,
-							   double * W, 
-							   int FIRST_PLOT,
-							   int W_SCALE, 
-							   double W_min, double W_MAX, 
-							   double i_PLOT )
+							                                             double * W, 
+							                                             int FIRST_PLOT,
+							                                             int W_SCALE, 
+							                                             double W_min, 
+                                                           double W_MAX, 
+							                                             double i_PLOT )
 {
   /* Input parameters:
      . W_SCALE
      . W_min, W_MAX: max and min values vertical axis.
-     . T: Parameter_Table
+     . CPG: Parameter_CPGPLOT pointer to strucure
      . W: GRID (values to plot) as a pointer to  double array.  
      . i_PLOT: the 2D plot is drawn for each value of i_PLOT. 
                For instance i_PLOT could be a given time. 

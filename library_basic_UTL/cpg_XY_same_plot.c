@@ -1,7 +1,7 @@
 #include "cpgplot_headers.h"
 
 void cpg_XY_same_plot( int n, float *xs, float *ys, 
-		       int color_Index, int type_of_Line, int type_of_Width, int type_of_Symbol )
+		                   int color_Index, int type_of_Line, int type_of_Width, int type_of_Symbol )
 {  
   cpgsci(color_Index);
     

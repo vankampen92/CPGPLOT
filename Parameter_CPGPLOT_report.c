@@ -14,7 +14,7 @@ void paramCommand_Line(FILE *fp, Parameter_CPGPLOT * CPG)
 
   fprintf_Input_Parameter_FILE(fp, CPG->CPG_File);
 
-#include <include.CPG.fprintPar.c>
+  #include <include.CPG.fprintPar.c>
 
 }
 
